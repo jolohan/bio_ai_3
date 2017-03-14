@@ -10,7 +10,8 @@ public class GeneticAlgorithm {
     }
 
     public Individual mainLoop() {
-        
+
+        return null;
     }
 
 }
