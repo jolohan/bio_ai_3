@@ -15,6 +15,7 @@ public class LoadImage {
     public static final String IMAGE_NAME = "/Test image.jpg";
 
     // "Test Image 3/1/Test image.jpg"
+    
     int[][][] imageMatrix;
 
     public LoadImage(int imageNumber) throws IOException {
