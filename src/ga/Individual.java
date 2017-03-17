@@ -25,6 +25,7 @@ public class Individual {
 
     private void initIndividual() {
         regionGrowing();
+        makeReadableSegmenation();
     }
 
     void regionGrowing() {
@@ -45,6 +46,7 @@ public class Individual {
             //if (i > 1000) { break; }
             //else { i ++; }
         }
+        //System.out.println(this);
     }
 
     private int[] getSeedPoint(int[][] visited, int[] lastSeedPoint) {
@@ -114,6 +116,7 @@ public class Individual {
     }
 
     private boolean isSimilar(int pixel1, int pixel2) {
+        //System.out.println(getDistanceInColors(pixel1,pixel2));
         return getDistanceInColors(pixel1, pixel2) < Main.THRESHHOLD;
     }
 
@@ -139,6 +142,7 @@ public class Individual {
         int[] pixel2 = imageMatrix[row2][col2];
         double answer = 0;
         for (int i = 0; i < pixel1.length; i++) {
+            //System.out.println(pixel1[i]+"  "+pixel2[i]);
             double colorDelta = Math.pow(pixel1[i] - pixel2[i], 2);
             answer += colorDelta;
         }
@@ -185,8 +189,8 @@ public class Individual {
         int[] coordinates = getRowCol(rowCol);
         int row = coordinates[0];
         int col = coordinates[1];
-        if (visited[row][col] == 1) { return true; }
-        else { return false; }
+        if (visited[row][col] == 1) return true;
+        return false;
     }
 
     int getRowCol(int row, int col) {
@@ -200,14 +204,53 @@ public class Individual {
         return coordinates;
     }
 
-    public String toString() {
-        String s = "";
-        for (int i = 0; i < imageHeight; i ++) {
-            String r = "";
+    public int[][] makeReadableSegmenation() {
+        int[][] readableMatrix = new int[imageHeight][imageWidth];
+        int[][] visited = new int[imageHeight][imageWidth];
+        int segmentNumber = 0;
+        for (int i = 0; i < imageHeight; i++) {
             for (int j = 0; j < imageWidth; j++) {
-                int index = getRowCol(i, j);
-                r += genoType[index] + ", ";
+                int pixel = getRowCol(i, j);
+                if (! isVisited(pixel, visited)) {
+                    int pointer = genoType[pixel];
+                    insertValueIntoMatrix(readableMatrix, segmentNumber, pointer);
+                    insertValueIntoMatrix(visited, 1, pixel);
+                    if (pixel == 0) {
+                        //System.out.println(isVisited(pixel, visited));
+                    }
+                    while (pointer != pixel) {
+                        pixel = pointer;
+                        pointer = genoType[pixel];
+                        insertValueIntoMatrix(readableMatrix, segmentNumber, pixel);
+                        insertValueIntoMatrix(visited, 1, pixel);
+                    }
+                    segmentNumber ++;
+                }
             }
+        }
+        //print2DMatrix(readableMatrix);
+        return readableMatrix;
+    }
+
+    private void insertValueIntoMatrix(int[][] matrix, int value, int index) {
+        int[] rowCol = getRowCol(index);
+        int row = rowCol[0];
+        int col = rowCol[1];
+        //System.out.println(matrix[row][col]);
+        matrix[row][col] = value;
+        //System.out.println(matrix[row][col]);
+    }
+
+    public String toString() {
+        int[][] matrix = makeReadableSegmenation();
+        String s = "";
+        for (int i = 0; i < matrix.length; i ++) {
+            String r = "";
+            int[] row = matrix[i];
+            for (int j = 0; j < row.length; j++) {
+                r += row[j] + " ";
+            }
+            r = r.trim();
             s += r + "\n";
         }
         return s;

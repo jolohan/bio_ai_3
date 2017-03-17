@@ -1,4 +1,4 @@
-package input;
+package inputOutput;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -30,9 +30,11 @@ public class LoadImage {
         imageMatrix = convertTo2DUsingGetRGB(image);
     }
 
+
+    // Changed to 3x2 image while testing
     private static int[][][] convertTo2DUsingGetRGB(BufferedImage image) {
-        int width = image.getWidth();
-        int height = image.getHeight();
+        int width = 3;//image.getWidth();
+        int height = 2;//image.getHeight();
         int numberOfColors = 3;
         int[][][] result = new int[height][width][numberOfColors];
         for (int row = 0; row < height; row++) {

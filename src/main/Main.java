@@ -1,7 +1,7 @@
 package main;
 
 import ga.Individual;
-import input.LoadImage;
+import inputOutput.LoadImage;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public class Main {
 
-    public static final double THRESHHOLD = 0.1;
+    public static final double THRESHHOLD = 10;
 
     public static void main(String[] args) throws IOException{
         LoadImage img = new LoadImage(1);
