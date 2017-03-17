@@ -50,6 +50,10 @@ public class LoadImage {
         return result;
     }
 
+    public int[][][] getImageMatrix() {
+        return imageMatrix;
+    }
+
     public String toString() {
         String s = "";
         String r;
