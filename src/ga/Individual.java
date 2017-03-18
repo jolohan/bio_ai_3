@@ -1,6 +1,6 @@
 package ga;
 
-import inputOutput.DrawPic;
+import inputOutput.Main;
 
 import java.util.ArrayList;
 
@@ -90,7 +90,7 @@ public class Individual {
             addToVisited(visited, pixel);
             ArrayList<Integer> neighbours = getAdjacentNeighbours(pixel, visited, true);
             double rnd = Math.random();
-            if (rnd < 1 - DrawPic.INIT_RANDOMNESS) {
+            if (rnd < 1 - Main.INIT_RANDOMNESS) {
                 int i = 0;
                 while (i < neighbours.size()) {
                     int neighbour = neighbours.get(i);
@@ -109,11 +109,11 @@ public class Individual {
                 int mostSimilarNeighbour = getMostSimilarNeighbour(neighbours, pixel);
                 if (mostSimilarNeighbour == -1
                         || getDistanceInColors(pixel, mostSimilarNeighbour)
-                        > DrawPic.THRESHHOLD) {
+                        > Main.THRESHHOLD) {
                     editGenoType(pixel, pixel);
                 }
                 else {
-                    if (Math.random() < 1 - DrawPic.INIT_RANDOMNESS) {
+                    if (Math.random() < 1 - Main.INIT_RANDOMNESS) {
                         editGenoType(pixel, mostSimilarNeighbour);
                     }
                     else {
@@ -151,7 +151,7 @@ public class Individual {
 
     private boolean isSimilar(int pixel1, int pixel2) {
         //System.out.println(getDistanceInColors(pixel1,pixel2));
-        return getDistanceInColors(pixel1, pixel2) < DrawPic.THRESHHOLD;
+        return getDistanceInColors(pixel1, pixel2) < Main.THRESHHOLD;
     }
 
     public void print2DMatrix(int[][] matrix) {
