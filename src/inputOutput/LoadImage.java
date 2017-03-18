@@ -17,6 +17,8 @@ public class LoadImage {
     // "Test Image 3/1/Test image.jpg"
 
     int[][][] imageMatrix;
+    int height;
+    int width;
 
     public LoadImage(int imageNumber) throws IOException {
         String s = IMAGE_PATH+imageNumber+IMAGE_NAME;
@@ -32,9 +34,10 @@ public class LoadImage {
 
 
     // Changed to 3x2 image while testing
-    private static int[][][] convertTo2DUsingGetRGB(BufferedImage image) {
-        int width = 3;//image.getWidth();
-        int height = 2;//image.getHeight();
+    private int[][][] convertTo2DUsingGetRGB(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        setHeightAndWidth(height, width);
         int numberOfColors = 3;
         int[][][] result = new int[height][width][numberOfColors];
         for (int row = 0; row < height; row++) {
@@ -50,6 +53,19 @@ public class LoadImage {
         }
 
         return result;
+    }
+
+    private void setHeightAndWidth(int height, int width) {
+        this.height = height;
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     public int[][][] getImageMatrix() {

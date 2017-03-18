@@ -1,6 +1,6 @@
 package ga;
 
-import main.Main;
+import inputOutput.DrawPic;
 
 import java.util.ArrayList;
 
@@ -11,8 +11,8 @@ public class Individual {
 
     int[] genoType;
     int[][][] imageMatrix;
-    int imageHeight;
-    int imageWidth;
+    static int imageHeight;
+    static int imageWidth;
 
     public Individual(int[][][] imageMatrix) {
         this.imageMatrix = imageMatrix;
@@ -88,22 +88,56 @@ public class Individual {
         while (! q.isEmpty()) {
             int pixel = q.remove(q.size()-1);
             addToVisited(visited, pixel);
-            ArrayList<Integer> neighbours = getAdjacentNeighbours(pixel, visited);
-            int i = 0;
-            while (i < neighbours.size()) {
-                int neighbour = neighbours.get(i);
-                if (isSimilar(seedPointRowCol, neighbour)) {
-                    editGenoType(pixel, neighbour);
-                    q.add(neighbour);
-                    break;
+            ArrayList<Integer> neighbours = getAdjacentNeighbours(pixel, visited, true);
+            double rnd = Math.random();
+            if (rnd < 1 - DrawPic.INIT_RANDOMNESS) {
+                int i = 0;
+                while (i < neighbours.size()) {
+                    int neighbour = neighbours.get(i);
+                    if (isSimilar(seedPointRowCol, neighbour)) {
+                        editGenoType(pixel, neighbour);
+                        q.add(neighbour);
+                        break;
+                    }
+                    i ++;
                 }
-                i ++;
+                if (i == neighbours.size()) {
+                    editGenoType(pixel, pixel);
+                }
             }
-            if (i == neighbours.size()) {
-                editGenoType(pixel, pixel);
+            else {
+                int mostSimilarNeighbour = getMostSimilarNeighbour(neighbours, pixel);
+                if (mostSimilarNeighbour == -1
+                        || getDistanceInColors(pixel, mostSimilarNeighbour)
+                        > DrawPic.THRESHHOLD) {
+                    editGenoType(pixel, pixel);
+                }
+                else {
+                    if (Math.random() < 1 - DrawPic.INIT_RANDOMNESS) {
+                        editGenoType(pixel, mostSimilarNeighbour);
+                    }
+                    else {
+                        int index = (int) (Math.random()*neighbours.size());
+                        editGenoType(pixel, neighbours.get(index));
+                    }
+                }
             }
+
         }
 
+    }
+
+    private int getMostSimilarNeighbour(ArrayList<Integer> neighbours, int pixel) {
+        int mostSimilar = -1;
+        double mostSimilarScore = 10000;
+        for (int neighbour : neighbours) {
+            double score = getDistanceInColors(neighbour, pixel);
+            if (score < mostSimilarScore) {
+                mostSimilar = neighbour;
+                mostSimilarScore = score;
+            }
+        }
+        return mostSimilar;
     }
 
     private void addToVisited(int[][] visited, int pixel) {
@@ -117,7 +151,7 @@ public class Individual {
 
     private boolean isSimilar(int pixel1, int pixel2) {
         //System.out.println(getDistanceInColors(pixel1,pixel2));
-        return getDistanceInColors(pixel1, pixel2) < Main.THRESHHOLD;
+        return getDistanceInColors(pixel1, pixel2) < DrawPic.THRESHHOLD;
     }
 
     public void print2DMatrix(int[][] matrix) {
@@ -147,61 +181,6 @@ public class Individual {
             answer += colorDelta;
         }
         return Math.sqrt(answer);
-    }
-
-    private ArrayList<Integer> getAdjacentNeighbours(int pixel, int[][] visited) {
-        ArrayList<Integer> neighbours = new ArrayList<>();
-        int row = getRowCol(pixel)[0];
-        int col = getRowCol(pixel)[1];
-        int newPixel;
-        if (row != 0) {
-            int newRow = row -1;
-            newPixel = getRowCol(newRow, col);
-            if (! isVisited(newPixel, visited)) {
-                neighbours.add(newPixel);
-            }
-        }
-        if (row != imageHeight -1) {
-            int newRow = row +1;
-            newPixel = getRowCol(newRow, col);
-            if (! isVisited(newPixel, visited)) {
-                neighbours.add(newPixel);
-            }
-        }
-        if (col != 0) {
-            int newCol = col -1;
-            newPixel = getRowCol(row, newCol);
-            if (! isVisited(newPixel, visited)) {
-                neighbours.add(newPixel);
-            }
-        }
-        if (col != imageWidth -1) {
-            int newCol = col +1;
-            newPixel = getRowCol(row, newCol);
-            if (! isVisited(newPixel, visited)) {
-                neighbours.add(newPixel);
-            }
-        }
-        return neighbours;
-    }
-
-    private boolean isVisited(int rowCol, int[][] visited) {
-        int[] coordinates = getRowCol(rowCol);
-        int row = coordinates[0];
-        int col = coordinates[1];
-        if (visited[row][col] == 1) return true;
-        return false;
-    }
-
-    int getRowCol(int row, int col) {
-        return row*imageWidth + col;
-    }
-
-    int[] getRowCol(int rowCol) {
-        int[] coordinates = new int[2];
-        coordinates[0] = rowCol/imageWidth;
-        coordinates[1] = rowCol%imageWidth;
-        return coordinates;
     }
 
     public int[][] makeReadableSegmenation() {
@@ -241,6 +220,28 @@ public class Individual {
         //System.out.println(matrix[row][col]);
     }
 
+
+    public int[] getGenoType() {
+        return genoType;
+    }
+
+    public int[][][] getImageMatrix() {
+        return imageMatrix;
+    }
+
+    public void printGenoType() {
+        String s = "";
+        for (int i = 0; i < imageHeight; i ++) {
+            String r = "";
+            for (int j = 0; j < imageWidth; j++) {
+                r += genoType[i*imageWidth+j] + " ";
+            }
+            r = r.trim();
+            s += r + "\n";
+        }
+        System.out.println(s);
+    }
+
     public String toString() {
         int[][] matrix = makeReadableSegmenation();
         String s = "";
@@ -254,6 +255,90 @@ public class Individual {
             s += r + "\n";
         }
         return s;
+    }
+
+
+
+
+    static int getRowCol(int row, int col) {
+        return row*imageWidth + col;
+    }
+
+    static int[] getRowCol(int rowCol) {
+        int[] coordinates = new int[2];
+        coordinates[0] = rowCol/imageWidth;
+        coordinates[1] = rowCol%imageWidth;
+        return coordinates;
+    }
+
+    private static ArrayList<Integer> getAdjacentNeighbours(int pixel, int[][] visited,
+                                                            boolean b) {
+        ArrayList<Integer> neighbours = new ArrayList<>();
+        int row = getRowCol(pixel)[0];
+        int col = getRowCol(pixel)[1];
+        int newPixel;
+        if (row != 0) {
+            int newRow = row - 1;
+            newPixel = getRowCol(newRow, col);
+            if (! b || !isVisited(newPixel, visited)) {
+                neighbours.add(newPixel);
+            }
+
+        }
+        if (row != imageHeight - 1) {
+            int newRow = row + 1;
+            newPixel = getRowCol(newRow, col);
+            if (! b || !isVisited(newPixel, visited)) {
+                neighbours.add(newPixel);
+            }
+        }
+        if (col != 0) {
+            int newCol = col - 1;
+            newPixel = getRowCol(row, newCol);
+            if (! b || !isVisited(newPixel, visited)) {
+                neighbours.add(newPixel);
+            }
+        }
+        if (col != imageWidth - 1) {
+            int newCol = col + 1;
+            newPixel = getRowCol(row, newCol);
+            if (! b || !isVisited(newPixel, visited)) {
+                neighbours.add(newPixel);
+            }
+        }
+        //Collections.shuffle(neighbours);
+        return neighbours;
+    }
+
+    private static boolean isVisited(int rowCol, int[][] visited) {
+        int[] coordinates = getRowCol(rowCol);
+        int row = coordinates[0];
+        int col = coordinates[1];
+        if (visited[row][col] == 1) return true;
+        return false;
+    }
+
+    public static boolean isEdgePixel(int[][] readableSegmentation, int row, int col) {
+        int pixel = getRowCol(row, col);
+        ArrayList<Integer> neighbours = getAdjacentNeighbours(
+                pixel, new int[1][1], false);
+        for (int neighbour : neighbours) {
+            if (isDifferentSegments(readableSegmentation, pixel, neighbour)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isDifferentSegments(int[][] readableSegmentation,
+                                        int pixel1, int pixel2) {
+        int row1 = getRowCol(pixel1)[0];
+        int col1 = getRowCol(pixel1)[1];
+        int row2 = getRowCol(pixel2)[0];
+        int col2 = getRowCol(pixel2)[1];
+
+        return (readableSegmentation[row1][col1]
+                != readableSegmentation[row2][col2]);
     }
 
 }
