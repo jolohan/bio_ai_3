@@ -9,10 +9,15 @@ import java.util.ArrayList;
  */
 public class Individual {
 
-    int[] genoType;
-    int[][][] imageMatrix;
+    // =====================
     static int imageHeight;
     static int imageWidth;
+    // =====================
+
+    public final int[][][] imageMatrix;
+    private int[] genoType;
+    private int[][] segmenation;
+    private int[][] listOfSegments;
 
     public Individual(int[][][] imageMatrix) {
         this.imageMatrix = imageMatrix;
@@ -36,7 +41,7 @@ public class Individual {
         while (true) {
             seedPoint = getSeedPoint(visited, lastSeedPoint);
             if (seedPoint[0] == -1) {
-                System.out.println("Done with all regions");
+                //System.out.println("Done with all regions");
                 break;
             }
 
@@ -108,8 +113,8 @@ public class Individual {
             else {
                 int mostSimilarNeighbour = getMostSimilarNeighbour(neighbours, pixel);
                 if (mostSimilarNeighbour == -1
-                        || getDistanceInColors(pixel, mostSimilarNeighbour)
-                        > Main.THRESHHOLD) {
+                        || getDistanceInColors(seedPointRowCol,
+                        mostSimilarNeighbour) > Main.THRESHHOLD) {
                     editGenoType(pixel, pixel);
                 }
                 else {
@@ -183,6 +188,7 @@ public class Individual {
         return Math.sqrt(answer);
     }
 
+    // TATT UTGANGSPUNKT I SNAKE. MÅ ENDRES
     public int[][] makeReadableSegmenation() {
         int[][] readableMatrix = new int[imageHeight][imageWidth];
         int[][] visited = new int[imageHeight][imageWidth];
@@ -190,6 +196,7 @@ public class Individual {
         for (int i = 0; i < imageHeight; i++) {
             for (int j = 0; j < imageWidth; j++) {
                 int pixel = getRowCol(i, j);
+
                 if (! isVisited(pixel, visited)) {
                     int pointer = genoType[pixel];
                     insertValueIntoMatrix(readableMatrix, segmentNumber, pointer);
@@ -197,7 +204,7 @@ public class Individual {
                     if (pixel == 0) {
                         //System.out.println(isVisited(pixel, visited));
                     }
-                    while (pointer != pixel) {
+                    while (! isVisited(pointer, visited)) {
                         pixel = pointer;
                         pointer = genoType[pixel];
                         insertValueIntoMatrix(readableMatrix, segmentNumber, pixel);
@@ -259,6 +266,7 @@ public class Individual {
 
 
 
+    //=================================================================================
 
     static int getRowCol(int row, int col) {
         return row*imageWidth + col;

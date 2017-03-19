@@ -2,6 +2,7 @@ package inputOutput;/**
  * Created by johan on 17/03/17.
  */
 
+import ga.GeneticAlgorithm;
 import ga.Individual;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -17,8 +18,10 @@ public class Main extends Application {
 
     // ========================================================
 
-    public static final double THRESHHOLD = 100;
+    public static final double THRESHHOLD = 110;
     public static final double INIT_RANDOMNESS = 0.0002;
+
+    public static final int POPULATION_SIZE = 50;
 
     public static void main(String[] args) {
         launch();
@@ -28,19 +31,21 @@ public class Main extends Application {
 
     private int width;
     private int height;
-    private int step = 5;
-    private int margin = 30;
-    private int graphLineWidth = 2;
     private LoadImage img;
     private int[][] readableSegmentation;
 
     public void init() throws IOException {
         LoadImage img = new LoadImage(1);
         //System.out.println(img);
-        Individual a = new Individual(img.getImageMatrix());
-        this.readableSegmentation = a.makeReadableSegmenation();
+
+        GeneticAlgorithm ga = new GeneticAlgorithm(img.getImageMatrix());
+
+        Individual bestInd = ga.mainLoop();
+        readableSegmentation = bestInd.makeReadableSegmenation();
         //System.out.println(a);
         //a.printGenoType();
+
+
         this.width = img.getWidth();
         this.height = img.getHeight();
         this.img = img;
