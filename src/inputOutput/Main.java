@@ -20,8 +20,12 @@ public class Main extends Application {
 
     public static final double THRESHHOLD = 110;
     public static final double INIT_RANDOMNESS = 0.0002;
+    public static final double CROSSOVER_RATE = 0.7;
+    public static final double MUTATION_RATE = 0.0001;
 
     public static final int POPULATION_SIZE = 50;
+    public static final int ARCHIVE_SIZE = 50;
+    public static final int NUMBER_OF_GENERATIONS= 5;
 
     public static void main(String[] args) {
         launch();

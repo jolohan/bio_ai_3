@@ -16,6 +16,13 @@ public class Population {
         generateRandomPopulation(Main.POPULATION_SIZE, imageMatrix);
     }
 
+    void updateFitness() {
+        for (int i = 0; i < population.size(); i++) {
+            Individual ind = population.get(i);
+            ind.updateFitness();
+        }
+    }
+
     private void generateRandomPopulation(int populationSize,
                                           int[][][] imageMatrix) {
         for (int i = 0; i < populationSize; i++) {
@@ -28,6 +35,10 @@ public class Population {
 
     public ArrayList<Individual> getPopulation() {
         return this.population;
+    }
+
+    public void addIndividuals(ArrayList<Individual> inds) {
+        population.addAll(inds);
     }
 
 }

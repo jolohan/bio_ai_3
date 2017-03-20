@@ -18,6 +18,12 @@ public class Individual {
     private int[] genoType;
     private int[][] segmenation;
     private int[][] listOfSegments;
+    private int[] edgePixels;
+
+    public Individual(int[][][] imageMatrix, int[] genoType) {
+        this.imageMatrix = imageMatrix;
+        this.genoType = genoType;
+    }
 
     public Individual(int[][][] imageMatrix) {
         this.imageMatrix = imageMatrix;
@@ -26,6 +32,11 @@ public class Individual {
         int genoTypeSize = imageHeight*imageWidth;
         this.genoType = new int[genoTypeSize];
         initIndividual();
+    }
+
+    void updateRepresentations() {
+        segmenation = makeReadableSegmenation();
+        listOfSegments = makeListOfSegments();
     }
 
     private void initIndividual() {
@@ -192,15 +203,24 @@ public class Individual {
     public int[][] makeReadableSegmenation() {
         int[][] readableMatrix = new int[imageHeight][imageWidth];
         int[][] visited = new int[imageHeight][imageWidth];
-        int segmentNumber = 0;
+        int segmentNumber = 1;
         for (int i = 0; i < imageHeight; i++) {
             for (int j = 0; j < imageWidth; j++) {
                 int pixel = getRowCol(i, j);
+                int pointer = genoType[pixel];
+                if (isVisited(pointer, readableMatrix)) {
+                    int pointerSegmentNumber = getValueFromMatrix(
+                            pointer, readableMatrix);
+                    insertValueIntoMatrix(readableMatrix, pointerSegmentNumber, pixel);
+                }
+                while (! isVisited(pixel, readableMatrix)) {
+                    insertValueIntoMatrix(readableMatrix, segmentNumber, pixel);
+                    pixel = pointer;
+                    pointer = genoType[pixel];
+                }
 
                 if (! isVisited(pixel, visited)) {
                     int pointer = genoType[pixel];
-                    insertValueIntoMatrix(readableMatrix, segmentNumber, pointer);
-                    insertValueIntoMatrix(visited, 1, pixel);
                     if (pixel == 0) {
                         //System.out.println(isVisited(pixel, visited));
                     }
@@ -216,6 +236,10 @@ public class Individual {
         }
         //print2DMatrix(readableMatrix);
         return readableMatrix;
+    }
+
+    private int[][] makeListOfSegments() {
+        ArrayList<ArrayList> 
     }
 
     private void insertValueIntoMatrix(int[][] matrix, int value, int index) {
@@ -262,6 +286,16 @@ public class Individual {
             s += r + "\n";
         }
         return s;
+    }
+
+    // GA operations
+    //=================================================================================
+
+    void mutateGene(int index) {
+        ArrayList<Integer> neighbours = getAdjacentNeighbours(
+                index, new int[1][1], false);
+        int newIndex = (int) (Math.random()*neighbours.size());
+        genoType[index] = neighbours.get(newIndex);
     }
 
 
@@ -322,8 +356,8 @@ public class Individual {
         int[] coordinates = getRowCol(rowCol);
         int row = coordinates[0];
         int col = coordinates[1];
-        if (visited[row][col] == 1) return true;
-        return false;
+        if (visited[row][col] == 0) return false;
+        return true;
     }
 
     public static boolean isEdgePixel(int[][] readableSegmentation, int row, int col) {
@@ -347,6 +381,12 @@ public class Individual {
 
         return (readableSegmentation[row1][col1]
                 != readableSegmentation[row2][col2]);
+    }
+
+    private static int getValueFromMatrix(int rowCol, int[][] matrix) {
+        int row = getRowCol(rowCol)[0];
+        int col = getRowCol(rowCol)[1];
+        return matrix[row][col];
     }
 
 }
