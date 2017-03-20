@@ -1,5 +1,6 @@
 package ga;
 
+import inputOutput.LoadImage;
 import inputOutput.Main;
 
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ public class GeneticAlgorithm {
     Population population;
     private final int genoTypeSize;
 
-    public GeneticAlgorithm(int[][][] imageMatrix) {
-        this.population = new Population(imageMatrix);
+    public GeneticAlgorithm(LoadImage loadedImage) {
+        this.population = new Population(loadedImage);
         genoTypeSize = getIndividual(0).getGenoType().length;
     }
 
@@ -62,7 +63,7 @@ public class GeneticAlgorithm {
             }
             else { childGenoType[i] = mother.getGenoType()[i]; }
         }
-        Individual child = new Individual(father.getImageMatrix(), childGenoType);
+        Individual child = new Individual(father.imageArray, childGenoType);
         return child;    
     }
 

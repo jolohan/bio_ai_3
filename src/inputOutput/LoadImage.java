@@ -16,9 +16,9 @@ public class LoadImage {
 
     // "Test Image 3/1/Test image.jpg"
 
-    int[][][] imageMatrix;
-    int height;
-    int width;
+    private final int[][] imageArray;
+    private int height;
+    private int width;
 
     public LoadImage(int imageNumber) throws IOException {
         String s = IMAGE_PATH+imageNumber+IMAGE_NAME;
@@ -29,17 +29,17 @@ public class LoadImage {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        imageMatrix = convertTo2DUsingGetRGB(image);
+        imageArray = convertToArrayRGB(image);
     }
 
 
     // Changed to 3x2 image while testing
-    private int[][][] convertTo2DUsingGetRGB(BufferedImage image) {
+    private int[][] convertToArrayRGB(BufferedImage image) {
         int width = image.getWidth();
         int height = image.getHeight();
         setHeightAndWidth(height, width);
         int numberOfColors = 3;
-        int[][][] result = new int[height][width][numberOfColors];
+        int[][] result = new int[height*width][numberOfColors];
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
                 int color = image.getRGB(col, row);
@@ -48,7 +48,7 @@ public class LoadImage {
                 int red = (color & 0xff0000) >> 16;
                 int[] rgb = new int[numberOfColors];
                 rgb[0] = red; rgb[1] = green; rgb[2] = blue;
-                result[row][col] = rgb;
+                result[row*width+col] = rgb;
             }
         }
 
@@ -68,18 +68,18 @@ public class LoadImage {
         return width;
     }
 
-    public int[][][] getImageMatrix() {
-        return imageMatrix;
+    public int[][] getImageArray() {
+        return imageArray;
     }
 
     public String toString() {
         String s = "";
         String r;
-        for (int i = 0; i < imageMatrix.length; i++) {
+        for (int i = 0; i < imageArray.length; i++) {
             r = "";
             System.out.println(i);
-            for (int j = 0; j < imageMatrix[i].length; j++) {
-                int[] cell = imageMatrix[i][j];
+            for (int j = 0; j < imageArray[i].length; j++) {
+                int[] cell = imageArray[i*width+j];
                 r += "[ ";
                 for (int k = 0; k < 3; k++) {
                     r += cell[k]+", ";

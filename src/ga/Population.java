@@ -1,5 +1,6 @@
 package ga;
 
+import inputOutput.LoadImage;
 import inputOutput.Main;
 
 import java.util.ArrayList;
@@ -11,24 +12,24 @@ public class Population {
 
     ArrayList<Individual> population;
 
-    public Population(int[][][] imageMatrix) {
+    public Population(LoadImage loadedImage) {
         population = new ArrayList<>(Main.POPULATION_SIZE);
-        generateRandomPopulation(Main.POPULATION_SIZE, imageMatrix);
+        generateRandomPopulation(Main.POPULATION_SIZE, loadedImage);
     }
 
     void updateFitness() {
         for (int i = 0; i < population.size(); i++) {
             Individual ind = population.get(i);
-            ind.updateFitness();
+            //ind.updateFitness();
         }
     }
 
     private void generateRandomPopulation(int populationSize,
-                                          int[][][] imageMatrix) {
+                                          LoadImage loadedImage) {
         for (int i = 0; i < populationSize; i++) {
             String s = String.format("Generating individual # %d", i+1);
             System.out.println(s);
-            Individual a = new Individual(imageMatrix);
+            Individual a = new Individual(loadedImage);
             population.add(a);
         }
     }

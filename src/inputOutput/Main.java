@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -36,16 +37,18 @@ public class Main extends Application {
     private int width;
     private int height;
     private LoadImage img;
-    private int[][] readableSegmentation;
+    private int[] segmentation;
+    private Individual bestIndividual;
 
     public void init() throws IOException {
         LoadImage img = new LoadImage(1);
         //System.out.println(img);
 
-        GeneticAlgorithm ga = new GeneticAlgorithm(img.getImageMatrix());
+        GeneticAlgorithm ga = new GeneticAlgorithm(img);
 
         Individual bestInd = ga.mainLoop();
-        readableSegmentation = bestInd.makeReadableSegmenation();
+        this.bestIndividual = bestInd;
+        segmentation = bestInd.getSegmenation();
         //System.out.println(a);
         //a.printGenoType();
 
@@ -86,12 +89,19 @@ public class Main extends Application {
 
     private void drawOutlines(GraphicsContext gc) {
         double step = 0.5;
-        for (int i = 0; i < height; i++) {
+        ArrayList<Integer> edgePixels = bestIndividual.getEdgePixels();
+        for (int index = 0; index < edgePixels.size(); index++) {
+            int pixel = edgePixels.get(index);
+            int i = Individual.getRow(pixel);
+            int j = Individual.getCol(pixel);
+            gc.strokeLine(j-step, i-step, j+step,i+step);
+        }
+        /*for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if (Individual.isEdgePixel(this.readableSegmentation, i, j)) {
+                if (Individual.isEdgePixel(this.segmentation, i, j)) {
                     gc.strokeLine(j-step, i-step, j+step,i+step);
                 }
             }
-        }
+        }*/
     }
 }

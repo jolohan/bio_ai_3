@@ -1,5 +1,6 @@
 package ga;
 
+import inputOutput.LoadImage;
 import inputOutput.Main;
 
 import java.util.ArrayList;
@@ -14,103 +15,93 @@ public class Individual {
     static int imageWidth;
     // =====================
 
-    public final int[][][] imageMatrix;
+    public final int[][] imageArray;
     private int[] genoType;
-    private int[][] segmenation;
-    private int[][] listOfSegments;
-    private int[] edgePixels;
+    private int[] segmentation;
+    private ArrayList<ArrayList<Integer>> listOfSegments;
+    private ArrayList<Integer> edgePixels;
 
-    public Individual(int[][][] imageMatrix, int[] genoType) {
-        this.imageMatrix = imageMatrix;
+    public Individual(int[][] imageArray, int[] genoType) {
+        this.imageArray = imageArray;
         this.genoType = genoType;
+        updateRepresentations();
     }
 
-    public Individual(int[][][] imageMatrix) {
-        this.imageMatrix = imageMatrix;
-        this.imageHeight = imageMatrix.length;
-        this.imageWidth = imageMatrix[0].length;
-        int genoTypeSize = imageHeight*imageWidth;
+    public Individual(LoadImage loadedImage) {
+        this.imageArray = loadedImage.getImageArray();
+        this.imageHeight = loadedImage.getHeight();
+        this.imageWidth = loadedImage.getWidth();
+        int genoTypeSize = imageArray.length;
         this.genoType = new int[genoTypeSize];
         initIndividual();
     }
 
     void updateRepresentations() {
-        segmenation = makeReadableSegmenation();
-        listOfSegments = makeListOfSegments();
+        updateSegmentation();
+        //updateSegmentLists();
+        //updateEdgePixels();
     }
 
     private void initIndividual() {
-        regionGrowing();
-        makeReadableSegmenation();
+        initialAdjacency();
+        //printArrayAsMatrix(genoType);
+        updateRepresentations();
+       // printArrayAsMatrix(segmentation);
+    }
+
+    // NEEDS RANDOMNESS
+    void initialAdjacency() {
+        for (int pixel = 0; pixel < genoType.length; pixel++) {
+            ArrayList<Integer> neighbours = getNeighbours(pixel);
+            int mostSimilarNeighbour = getMostSimilarNeighbour(neighbours, pixel);
+            genoType[pixel] = mostSimilarNeighbour;
+        }
     }
 
     void regionGrowing() {
-        int[][] visited = new int[imageMatrix.length][imageMatrix[0].length];
-        int i = 0;
-        int[] lastSeedPoint = null;
-        int[] seedPoint;
+        boolean[] visited = new boolean[imageArray.length];
+        int lastSeedPoint = -1;
+        int seedPoint;
         while (true) {
             seedPoint = getSeedPoint(visited, lastSeedPoint);
-            if (seedPoint[0] == -1) {
-                //System.out.println("Done with all regions");
+            if (seedPoint == -1) {
                 break;
             }
-
             lastSeedPoint = seedPoint;
             growSingleRegion(visited, seedPoint);
-
-            //if (i > 1000) { break; }
-            //else { i ++; }
+            if (seedPoint%1000 == 0) {
+                System.out.println(seedPoint);
+            }
         }
-        //System.out.println(this);
     }
 
-    private int[] getSeedPoint(int[][] visited, int[] lastSeedPoint) {
-        int[] seedPoint = new int[2];
-        if (lastSeedPoint == null) {
-            seedPoint[0] = 0;
-            seedPoint[1] = 0;
-            return seedPoint;
+    private int getSeedPoint(boolean[] visited, int lastSeedPoint) {
+        int seedPoint = lastSeedPoint;
+        if (lastSeedPoint == -1) {
+            return 0;
         }
-        int row = lastSeedPoint[0];
-        int col = lastSeedPoint[1];
-        while (visited[row][col] == 1) {
-            if (col < imageWidth -1) {
-                col ++;
+        while (visited[seedPoint]) {
+            if (seedPoint == genoType.length-1) {
+                return -1;
             }
-            else {
-                if (row == imageHeight -1) {
-                    seedPoint[0] = -1;
-                    seedPoint[1] = -1;
-                    return seedPoint;
-                }
-                else {
-                    col = 0;
-                    row ++;
-                }
-            }
+            seedPoint ++;
         }
-        seedPoint[0] = row;
-        seedPoint[1] = col;
         return seedPoint;
     }
 
-    private void growSingleRegion(int[][] visited, int[] seedPoint) {
-        int row = seedPoint[0];
-        int col = seedPoint[1];
-        int seedPointRowCol = getRowCol(row, col);
+    private void growSingleRegion(boolean[] visited, int seedPoint) {
         ArrayList<Integer> q = new ArrayList<>();
-        q.add(seedPointRowCol);
+        q.add(seedPoint);
         while (! q.isEmpty()) {
             int pixel = q.remove(q.size()-1);
-            addToVisited(visited, pixel);
-            ArrayList<Integer> neighbours = getAdjacentNeighbours(pixel, visited, true);
+            visited[pixel] = true;
+            ArrayList<Integer> neighbours = getUnvisitedNeighbours(pixel, visited);
             double rnd = Math.random();
             if (rnd < 1 - Main.INIT_RANDOMNESS) {
                 int i = 0;
                 while (i < neighbours.size()) {
                     int neighbour = neighbours.get(i);
-                    if (isSimilar(seedPointRowCol, neighbour)) {
+                    if (isSimilar(seedPoint, neighbour)) {
                         editGenoType(pixel, neighbour);
                         q.add(neighbour);
                         break;
@@ -124,7 +115,7 @@ public class Individual {
             else {
                 int mostSimilarNeighbour = getMostSimilarNeighbour(neighbours, pixel);
                 if (mostSimilarNeighbour == -1
-                        || getDistanceInColors(seedPointRowCol,
+                        || getDistanceInColors(seedPoint,
                         mostSimilarNeighbour) > Main.THRESHHOLD) {
                     editGenoType(pixel, pixel);
                 }
@@ -156,11 +147,6 @@ public class Individual {
         return mostSimilar;
     }
 
-    private void addToVisited(int[][] visited, int pixel) {
-        int[] nRowCol = getRowCol(pixel);
-        visited[nRowCol[0]][nRowCol[1]] = 1;
-    }
-
     private void editGenoType(int from, int to) {
         this.genoType[from] = to;
     }
@@ -170,94 +156,100 @@ public class Individual {
         return getDistanceInColors(pixel1, pixel2) < Main.THRESHHOLD;
     }
 
-    public void print2DMatrix(int[][] matrix) {
-        String s = "";
-        for (int i = 0; i < matrix.length; i ++) {
-            String r = "";
-            int[] row = matrix[i];
-            for (int j = 0; j < row.length; j++) {
-                r += row[j] + ", ";
-            }
-            s += r + "\n";
-        }
-        System.out.println(s);
-    }
-
     public double getDistanceInColors(int p1, int p2) {
-        int row1 = getRowCol(p1)[0];
-        int col1 = getRowCol(p1)[1];
-        int row2 = getRowCol(p2)[0];
-        int col2 = getRowCol(p2)[1];
-        int[] pixel1 = imageMatrix[row1][col1];
-        int[] pixel2 = imageMatrix[row2][col2];
+        int[] pixel1 = imageArray[p1];
+        int[] pixel2 = imageArray[p2];
         double answer = 0;
         for (int i = 0; i < pixel1.length; i++) {
-            //System.out.println(pixel1[i]+"  "+pixel2[i]);
             double colorDelta = Math.pow(pixel1[i] - pixel2[i], 2);
             answer += colorDelta;
         }
         return Math.sqrt(answer);
     }
 
-    // TATT UTGANGSPUNKT I SNAKE. MÅ ENDRES
-    public int[][] makeReadableSegmenation() {
-        int[][] readableMatrix = new int[imageHeight][imageWidth];
-        int[][] visited = new int[imageHeight][imageWidth];
-        int segmentNumber = 1;
-        for (int i = 0; i < imageHeight; i++) {
-            for (int j = 0; j < imageWidth; j++) {
-                int pixel = getRowCol(i, j);
-                int pointer = genoType[pixel];
-                if (isVisited(pointer, readableMatrix)) {
-                    int pointerSegmentNumber = getValueFromMatrix(
-                            pointer, readableMatrix);
-                    insertValueIntoMatrix(readableMatrix, pointerSegmentNumber, pixel);
-                }
-                while (! isVisited(pixel, readableMatrix)) {
-                    insertValueIntoMatrix(readableMatrix, segmentNumber, pixel);
-                    pixel = pointer;
-                    pointer = genoType[pixel];
-                }
 
-                if (! isVisited(pixel, visited)) {
-                    int pointer = genoType[pixel];
-                    if (pixel == 0) {
-                        //System.out.println(isVisited(pixel, visited));
-                    }
-                    while (! isVisited(pointer, visited)) {
-                        pixel = pointer;
-                        pointer = genoType[pixel];
-                        insertValueIntoMatrix(readableMatrix, segmentNumber, pixel);
-                        insertValueIntoMatrix(visited, 1, pixel);
-                    }
+
+    // UPDATE
+    // ===========================================================
+
+    private void updateSegmentation() {
+        this.segmentation = new int[genoType.length];
+        boolean[] visited = new boolean[genoType.length];
+        int segmentNumber = 1;
+        for (int i = 0; i < genoType.length; i++) {
+            if (segmentation[i] == 0) {
+                if (findSegment(i, segmentNumber, visited) == segmentNumber) {
                     segmentNumber ++;
                 }
             }
         }
-        //print2DMatrix(readableMatrix);
-        return readableMatrix;
     }
 
-    private int[][] makeListOfSegments() {
-        ArrayList<ArrayList> 
+    private int findSegment(int pixel, int segmentNumber, boolean[] visited) {
+        visited[pixel] = true;
+        int pointer = genoType[pixel];
+        if (segmentation[pointer] == 0) {
+            if (visited[pointer]) {
+                segmentation[pixel] = segmentNumber;
+                return segmentNumber;
+            }
+            else {
+                segmentation[pixel] =
+                        findSegment(pointer, segmentNumber, visited);
+                return segmentation[pixel];
+            }
+        }
+        else {
+            segmentation[pixel] = segmentation[pointer];
+            return segmentation[pointer];
+        }
     }
 
-    private void insertValueIntoMatrix(int[][] matrix, int value, int index) {
-        int[] rowCol = getRowCol(index);
-        int row = rowCol[0];
-        int col = rowCol[1];
-        //System.out.println(matrix[row][col]);
-        matrix[row][col] = value;
-        //System.out.println(matrix[row][col]);
+    private void updateSegmentLists() {
+        this.listOfSegments = new ArrayList<>(10000);
+        for (int i = 0; i < genoType.length; i++) {
+            int segmentNumber = segmentation[i];
+            while (listOfSegments.size() <= segmentNumber) {
+                listOfSegments.add(new ArrayList<>(10000));
+            }
+            if (segmentNumber == -1) {
+                System.out.println(i);
+            }
+            listOfSegments.get(segmentNumber).add(i);
+        }
     }
+
+    private void updateEdgePixels() {
+        this.edgePixels = new ArrayList<>();
+        ArrayList<Integer> temp = new ArrayList<>(1000);
+        for (int i = 0; i < genoType.length; i++) {
+            if (isEdgePixel(i)) {
+                temp.add(i);
+            }
+            if (temp.size()%1000 == 0) {
+                edgePixels.addAll(temp);
+                temp = new ArrayList<>(1000);
+            }
+        }
+    }
+
+    // ===========================================================
 
 
     public int[] getGenoType() {
         return genoType;
     }
 
-    public int[][][] getImageMatrix() {
-        return imageMatrix;
+    public int[] getSegmenation() {
+        return segmentation;
+    }
+
+    public ArrayList<ArrayList<Integer>> getListOfSegments() {
+        return listOfSegments;
+    }
+
+    public ArrayList<Integer> getEdgePixels() {
+        return edgePixels;
     }
 
     public void printGenoType() {
@@ -274,13 +266,12 @@ public class Individual {
     }
 
     public String toString() {
-        int[][] matrix = makeReadableSegmenation();
         String s = "";
-        for (int i = 0; i < matrix.length; i ++) {
+        for (int i = 0; i < imageHeight; i ++) {
             String r = "";
-            int[] row = matrix[i];
-            for (int j = 0; j < row.length; j++) {
-                r += row[j] + " ";
+            for (int j = 0; j < imageWidth; j++) {
+                r += segmentation[getRowCol(i, j)];
+                r += " ";
             }
             r = r.trim();
             s += r + "\n";
@@ -292,8 +283,7 @@ public class Individual {
     //=================================================================================
 
     void mutateGene(int index) {
-        ArrayList<Integer> neighbours = getAdjacentNeighbours(
-                index, new int[1][1], false);
+        ArrayList<Integer> neighbours = getNeighbours(index);
         int newIndex = (int) (Math.random()*neighbours.size());
         genoType[index] = neighbours.get(newIndex);
     }
@@ -302,91 +292,83 @@ public class Individual {
 
     //=================================================================================
 
-    static int getRowCol(int row, int col) {
+    public static int getRowCol(int row, int col) {
         return row*imageWidth + col;
     }
 
-    static int[] getRowCol(int rowCol) {
+    public static int[] getRowCol(int rowCol) {
         int[] coordinates = new int[2];
         coordinates[0] = rowCol/imageWidth;
         coordinates[1] = rowCol%imageWidth;
         return coordinates;
     }
 
-    private static ArrayList<Integer> getAdjacentNeighbours(int pixel, int[][] visited,
-                                                            boolean b) {
-        ArrayList<Integer> neighbours = new ArrayList<>();
-        int row = getRowCol(pixel)[0];
-        int col = getRowCol(pixel)[1];
-        int newPixel;
-        if (row != 0) {
-            int newRow = row - 1;
-            newPixel = getRowCol(newRow, col);
-            if (! b || !isVisited(newPixel, visited)) {
-                neighbours.add(newPixel);
-            }
+    public static int getRow(int rowCol) {
+        return rowCol/imageWidth;
+    }
 
-        }
-        if (row != imageHeight - 1) {
-            int newRow = row + 1;
-            newPixel = getRowCol(newRow, col);
-            if (! b || !isVisited(newPixel, visited)) {
-                neighbours.add(newPixel);
+    public static int getCol(int rowCol) {
+        return rowCol%imageWidth;
+    }
+
+    private ArrayList<Integer> getNeighbours(int pixel) {
+        ArrayList<Integer> neighbours = new ArrayList<>(4);
+        ArrayList<Integer> temp = new ArrayList<>(4);
+        temp.add(pixel-1);
+        temp.add(pixel+1);
+        temp.add(pixel-imageWidth);
+        temp.add(pixel+imageWidth);
+        for (int i = 0; i < temp.size(); i++) {
+            int neighbour = temp.get(i);
+            if (neighbour >= 0 && neighbour < genoType.length) {
+                if (getRow(pixel) == getRow(neighbour) ||
+                        getCol(pixel) == getCol(neighbour)) {
+                    neighbours.add(neighbour);
+                }
             }
         }
-        if (col != 0) {
-            int newCol = col - 1;
-            newPixel = getRowCol(row, newCol);
-            if (! b || !isVisited(newPixel, visited)) {
-                neighbours.add(newPixel);
-            }
-        }
-        if (col != imageWidth - 1) {
-            int newCol = col + 1;
-            newPixel = getRowCol(row, newCol);
-            if (! b || !isVisited(newPixel, visited)) {
-                neighbours.add(newPixel);
-            }
-        }
-        //Collections.shuffle(neighbours);
+        //System.out.println(pixel+"      "+neighbours);
         return neighbours;
     }
 
-    private static boolean isVisited(int rowCol, int[][] visited) {
-        int[] coordinates = getRowCol(rowCol);
-        int row = coordinates[0];
-        int col = coordinates[1];
-        if (visited[row][col] == 0) return false;
-        return true;
+    private ArrayList<Integer> getUnvisitedNeighbours(
+            int pixel, boolean[] visited) {
+        ArrayList<Integer> neighbours = getNeighbours(pixel);
+        for (int i = 0; i < neighbours.size(); i++) {
+            if (visited[neighbours.get(i)]) {
+                neighbours.remove(i);
+            }
+        }
+        return neighbours;
     }
 
-    public static boolean isEdgePixel(int[][] readableSegmentation, int row, int col) {
-        int pixel = getRowCol(row, col);
-        ArrayList<Integer> neighbours = getAdjacentNeighbours(
-                pixel, new int[1][1], false);
+    public boolean isEdgePixel(int pixel) {
+        ArrayList<Integer> neighbours = getNeighbours(pixel);
         for (int neighbour : neighbours) {
-            if (isDifferentSegments(readableSegmentation, pixel, neighbour)) {
+            if (isDifferentSegments(pixel, neighbour)) {
                 return true;
             }
         }
         return false;
     }
 
-    private static boolean isDifferentSegments(int[][] readableSegmentation,
-                                        int pixel1, int pixel2) {
-        int row1 = getRowCol(pixel1)[0];
-        int col1 = getRowCol(pixel1)[1];
-        int row2 = getRowCol(pixel2)[0];
-        int col2 = getRowCol(pixel2)[1];
-
-        return (readableSegmentation[row1][col1]
-                != readableSegmentation[row2][col2]);
+    private boolean isDifferentSegments(int pixel1, int pixel2) {
+        return (segmentation[pixel1] == segmentation[pixel2]);
     }
 
-    private static int getValueFromMatrix(int rowCol, int[][] matrix) {
-        int row = getRowCol(rowCol)[0];
-        int col = getRowCol(rowCol)[1];
-        return matrix[row][col];
+    private static void printArrayAsMatrix(int[] array) {
+        String s = "";
+        String r;
+        r = "";
+        for (int i = 0; i < array.length; i++) {
+            if (i %imageWidth == 0) {
+                s += r + "\n";
+                r = "";
+            }
+            r += array[i]+ " ";
+        }
+        s += r + "\n";
+        System.out.println(s);
     }
 
 }
