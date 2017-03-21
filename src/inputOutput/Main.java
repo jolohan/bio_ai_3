@@ -19,14 +19,23 @@ public class Main extends Application {
 
     // ========================================================
 
+    public static final boolean[] WHICH_SCORES = new boolean[3];
+    static {
+        WHICH_SCORES[0] = true;
+        WHICH_SCORES[1] = true;
+        WHICH_SCORES[2] = true;
+    }
+
+    public static final int Kth_NEAREST_NEIGHBOUR = 4;
+
     public static final double THRESHHOLD = 110;
     public static final double INIT_RANDOMNESS = 0.0002;
     public static final double CROSSOVER_RATE = 0.7;
     public static final double MUTATION_RATE = 0.0001;
 
-    public static final int POPULATION_SIZE = 50;
+    public static final int POPULATION_SIZE = 5;
     public static final int ARCHIVE_SIZE = 50;
-    public static final int NUMBER_OF_GENERATIONS= 5;
+    public static final int NUMBER_OF_GENERATIONS= 0;
 
     public static void main(String[] args) {
         launch();
@@ -43,7 +52,6 @@ public class Main extends Application {
     public void init() throws IOException {
         LoadImage img = new LoadImage(1);
         //System.out.println(img);
-
         GeneticAlgorithm ga = new GeneticAlgorithm(img);
 
         Individual bestInd = ga.mainLoop();
@@ -89,6 +97,7 @@ public class Main extends Application {
 
     private void drawOutlines(GraphicsContext gc) {
         double step = 0.5;
+        bestIndividual.updateEdgePixels();
         ArrayList<Integer> edgePixels = bestIndividual.getEdgePixels();
         for (int index = 0; index < edgePixels.size(); index++) {
             int pixel = edgePixels.get(index);

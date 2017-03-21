@@ -4,33 +4,78 @@ import inputOutput.LoadImage;
 import inputOutput.Main;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 public class GeneticAlgorithm {
 
-    Population population;
+    private Population population;
+    private Population archivePopulation;
     private final int genoTypeSize;
+    private final LoadImage loadImage;
 
     public GeneticAlgorithm(LoadImage loadedImage) {
-        this.population = new Population(loadedImage);
-        genoTypeSize = getIndividual(0).getGenoType().length;
+        loadImage = loadedImage;
+        this.population = new Population(
+                loadImage, true);
+        this.archivePopulation = new Population(
+                loadImage, false);
+        genoTypeSize = getIndividual(
+                archivePopulation, 0).getGenoType().length;
     }
 
     public Individual mainLoop() {
 
+        Date date = new Date();
+        long start = date.getTime();
         for (int i = 0; i < Main.NUMBER_OF_GENERATIONS; i++) {
-            population.updateFitness();
+            ArrayList<Individual> children = crossover(archivePopulation);
+            this.population = new Population(loadImage, true);
+            this.population.copyIndividualsToNewPopulation(children);
+            mutation(population);
 
-            ArrayList<Individual> children = crossover();
-            this.population.addIndividuals(children);
-            mutation();
+            updateFitness();
+            selection();
+            if (date.getTime()-start > 1) {
+                System.out.println("timed out");
+                break;
+            }
         }
-        return getIndividual(0);
+
+        return this.archivePopulation.getPopulation().get(0);
     }
 
-    private void mutation() {
-        int numberOfIndividualsToMutate = getIndividuals().size();
-        for (int i = 0; i < numberOfIndividualsToMutate; i++) {
-            mutateIndividual(getIndividual(i));
+    private void updateFitness() {
+        this.population.updateScores();
+        this.archivePopulation.updateScores();
+        this.population.updateFitnesses(archivePopulation);
+        this.archivePopulation.updateFitnesses(population);
+    }
+
+    private void selection() {
+        Population nextArchivedPopulation =
+                new Population(loadImage,true);
+        List<Individual> newIndividuals = getJoinedPopulations();
+        Collections.sort(newIndividuals, new FitnessComparator());
+        newIndividuals = newIndividuals.subList(0, Main.POPULATION_SIZE);
+        ArrayList<Individual> inds = new ArrayList<>(Main.POPULATION_SIZE);
+        inds.addAll(newIndividuals);
+        nextArchivedPopulation.copyIndividualsToNewPopulation(inds);
+        this.archivePopulation = nextArchivedPopulation;
+    }
+
+    private ArrayList<Individual> getNonDominatedIndividuals() {
+        ArrayList<Individual> nonDominated = new ArrayList<>();
+        nonDominated.addAll(this.population.getNonDominatedIndividuals());
+        nonDominated.addAll(this.archivePopulation.getNonDominatedIndividuals());
+        return nonDominated;
+    }
+
+    private void mutation(Population population) {
+        ArrayList<Individual> inds = population.getPopulation();
+        for (int i = 0; i < inds.size(); i++) {
+            mutateIndividual(inds.get(i));
         }
     }
 
@@ -42,13 +87,13 @@ public class GeneticAlgorithm {
         }
     }
     
-    private ArrayList<Individual> crossover() {
-        int numberOfIndividuals = getIndividuals().size();
-        ArrayList<Individual> children = new ArrayList<>(numberOfIndividuals);
-        for (int i = 0; i < numberOfIndividuals; i++) {
-            Individual father = getIndividual(i);
-            int motherIndex = (int) (Math.random()*numberOfIndividuals);
-            Individual mother = getIndividual(motherIndex);
+    private ArrayList<Individual> crossover(Population population) {
+        ArrayList<Individual> inds = population.getPopulation();
+        ArrayList<Individual> children = new ArrayList<>(inds.size());
+        for (int i = 0; i < inds.size(); i++) {
+            Individual father = inds.get(i);
+            int motherIndex = (int) (Math.random()*inds.size());
+            Individual mother = inds.get(motherIndex);
             Individual child = getChild(father, mother);
             children.add(child);
         }
@@ -63,16 +108,22 @@ public class GeneticAlgorithm {
             }
             else { childGenoType[i] = mother.getGenoType()[i]; }
         }
-        Individual child = new Individual(father.imageArray, childGenoType);
+        Individual child = new Individual(
+                father.imageArray, childGenoType);
         return child;    
     }
 
-    private ArrayList<Individual> getIndividuals() {
-        return this.population.getPopulation();
+    private Individual getIndividual(Population pop, int index) {
+        return pop.getPopulation().get(index);
     }
 
-    private Individual getIndividual(int index) {
-        return getIndividuals().get(index);
+    private List<Individual> getJoinedPopulations() {
+        List<Individual> joinedPop = new ArrayList<>(
+                population.getPopulation().size()
+                        +archivePopulation.getPopulation().size());
+        joinedPop.addAll(population.getPopulation());
+        joinedPop.addAll(archivePopulation.getPopulation());
+        return joinedPop;
     }
 
 }

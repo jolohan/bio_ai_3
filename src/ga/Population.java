@@ -3,7 +3,7 @@ package ga;
 import inputOutput.LoadImage;
 import inputOutput.Main;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Created by johan on 14/03/17.
@@ -12,16 +12,101 @@ public class Population {
 
     ArrayList<Individual> population;
 
-    public Population(LoadImage loadedImage) {
+    public Population(LoadImage loadedImage, boolean emptyPopulation) {
         population = new ArrayList<>(Main.POPULATION_SIZE);
-        generateRandomPopulation(Main.POPULATION_SIZE, loadedImage);
+        if (emptyPopulation) {
+
+        }
+        else {
+            generateRandomPopulation(Main.POPULATION_SIZE, loadedImage);
+        }
     }
 
-    void updateFitness() {
+    void copyIndividualsToNewPopulation(ArrayList<Individual> individuals) {
+        population = new ArrayList<>(individuals.size());
+        for (int i = 0; i < individuals.size(); i++) {
+            Individual ind = individuals.get(i);
+            population.add(ind);
+        }
+    }
+
+    ArrayList<Individual> getNonDominatedIndividuals() {
+        ArrayList<Individual> nonDominated = new ArrayList<>();
+        for (int i = 0; i < population.size(); i++) {
+            Individual a = population.get(i);
+            if (a.getFitness() < 1) {
+                nonDominated.add(a);
+            }
+        }
+        return nonDominated;
+    }
+
+    void updateScores() {
         for (int i = 0; i < population.size(); i++) {
             Individual ind = population.get(i);
-            //ind.updateFitness();
+            ind.updateScores();
         }
+    }
+
+    void updateFitnesses(Population otherPopulation) {
+        for (int i = 0; i < population.size(); i++) {
+            Individual a = population.get(i);
+            double density1 = getDistanceToKthNearestNeighbour(
+                    a, Main.Kth_NEAREST_NEIGHBOUR);
+            double density2 = otherPopulation.getDistanceToKthNearestNeighbour(
+                    a, Main.Kth_NEAREST_NEIGHBOUR);
+            double density = (density1+density2)/2;
+            density = 1 / (density + 2);
+            int numberOfDominators = getNumberOfDominators(a);
+            numberOfDominators += otherPopulation.getNumberOfDominators(a);
+            double fitnessScore = density + numberOfDominators;
+            a.updateFitness(fitnessScore);
+        }
+    }
+
+    double getDistanceToKthNearestNeighbour(Individual a, int k) {
+        List<Double> distances = getDistanceInObjectiveSpace(a);
+        Collections.sort(distances);
+        return distances.get(k);
+    }
+
+    private ArrayList<Double> getDistanceInObjectiveSpace(Individual a) {
+        ArrayList<Double> distances = new ArrayList<>(population.size());
+        for (int i = 0; i < distances.size(); i++) {
+            distances.add(getDistancesInObjectiveSpace(a, population.get(i)));
+        }
+        return distances;
+    }
+
+    private double getDistancesInObjectiveSpace(Individual a, Individual b) {
+        double distance = 0;
+        for (int i = 0; i < Main.WHICH_SCORES.length; i++) {
+            if (Main.WHICH_SCORES[i]) {
+                distance += Math.pow(a.getScores()[i]-b.getScores()[i], 2);
+            }
+        }
+        return Math.sqrt(distance);
+    }
+
+    int getNumberOfDominators(Individual a) {
+        int numberOfDominators = 0;
+        double[] aScores = a.getScores();
+        boolean dominated;
+        for (int i = 0; i < population.size(); i++) {
+            Individual b = population.get(i);
+            double[] bScores = b.getScores();
+            dominated = true;
+            for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
+                if (Main.WHICH_SCORES[j]){
+                    if (aScores[j] > bScores[j]) {
+                        dominated = false;
+                        break;
+                    }
+                }
+            }
+            if (dominated) { numberOfDominators ++; }
+        }
+        return numberOfDominators;
     }
 
     private void generateRandomPopulation(int populationSize,
