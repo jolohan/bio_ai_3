@@ -30,17 +30,6 @@ public class Population {
         }
     }
 
-    ArrayList<Individual> getNonDominatedIndividuals() {
-        ArrayList<Individual> nonDominated = new ArrayList<>();
-        for (int i = 0; i < population.size(); i++) {
-            Individual a = population.get(i);
-            if (a.getFitness() < 1) {
-                nonDominated.add(a);
-            }
-        }
-        return nonDominated;
-    }
-
     void updateScores() {
         for (int i = 0; i < population.size(); i++) {
             Individual ind = population.get(i);
@@ -76,8 +65,11 @@ public class Population {
 
     double getDistanceToKthNearestNeighbour(Individual a, int k) {
         List<Double> distances = getDistanceInObjectiveSpace(a);
-        Collections.sort(distances);
-        return distances.get(k);
+        if (k <= distances.size()) {
+            Collections.sort(distances);
+            return distances.get(k);
+        }
+        return 0;
     }
 
     private ArrayList<Double> getDistanceInObjectiveSpace(Individual a) {
@@ -130,6 +122,10 @@ public class Population {
             Individual a = new Individual(loadedImage);
             population.add(a);
         }
+    }
+
+    public void getBestIndividual() {
+
     }
 
     public ArrayList<Individual> getPopulation() {

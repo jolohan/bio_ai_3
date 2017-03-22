@@ -32,18 +32,19 @@ public class Main extends Application {
     public static final int Kth_NEAREST_NEIGHBOUR = 4;
 
     public static final double THRESHHOLD = 5;
-    public static final double SIMILAR_SEGMENT_THRESHOLD = 20;
-    public static final double INIT_RANDOMNESS = 0.001;
+    public static final double SIMILAR_SEGMENT_THRESHOLD = 10;
+    public static final double segmentSizeDemand = 1000;
+    public static final double INIT_RANDOMNESS = 1;
     public static final double CROSSOVER_RATE = 0.7;
-    public static final double MUTATION_RATE = 0.1;
+    public static final double MUTATION_RATE = 0.3;
 
-    public static final int POPULATION_SIZE = 1;
+    public static final int POPULATION_SIZE = 10;
     public static final int ARCHIVE_SIZE = POPULATION_SIZE;
-    public static final int NUMBER_OF_GENERATIONS= 0;
+    public static final int NUMBER_OF_GENERATIONS= 500;
 
     // ========================================================
 
-    public static final int IMAGE_NUMBER = 1;
+    public static final int IMAGE_NUMBER = 3;
 
     public static void main(String[] args) {
         launch();
@@ -59,20 +60,15 @@ public class Main extends Application {
 
     public void init() throws IOException {
         LoadImage img = new LoadImage();
-        //System.out.println(img);
         GeneticAlgorithm ga = new GeneticAlgorithm(img);
 
         Individual bestInd = ga.mainLoop();
         this.bestIndividual = bestInd;
-        //System.out.println(a);
-        //a.printGenoType();
-
 
         this.width = img.getWidth();
         this.height = img.getHeight();
         this.img = img;
         makeDifferentColors(img, bestInd);
-        colorBigAndWrite(img, 2, 1, bestInd);
     }
 
     @Override
@@ -114,56 +110,8 @@ public class Main extends Application {
             int j = Individual.getCol(pixel);
             gc.strokeLine(j-step, i-step, j+step,i+step);
         }
-        /*for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (Individual.isEdgePixel(this.segmentation, i, j)) {
-                    gc.strokeLine(j-step, i-step, j+step,i+step);
-                }
-            }
-        }*/
     }
 
-    /*public static void colorAndWrite(Graph graph, int type, int num) {
-        BufferedImage img = get_image(IMAGE);
-        img = scale(img, (int) (img.getWidth()*0.5), (int) (img.getHeight()*0.5));
-
-        if (type == 1) {
-            Color color = new Color(0,0,0);
-            Color background = new Color(255,255,255);
-            for (int i = 0; i < graph.rows; i++) {
-                for (int j = 0; j < graph.cols; j++) {
-                    img.setRGB(j,i, background.getRGB());
-                    for (Node neighbor : graph.nodes[i][j].neighbors) {
-                        if (neighbor.getSegment() != graph.nodes[i][j].getSegment()) {
-                            img.setRGB(j,i, color.getRGB());
-                        }
-                    }
-                }
-            }
-
-        }
-        else if (type == 2) {
-            Color color = new Color(0,255,0);
-            for (int i = 0; i < graph.rows; i++) {
-                for (int j = 0; j < graph.cols; j++) {
-                    for (Node neighbor : graph.nodes[i][j].neighbors) {
-                        if (neighbor.getSegment() != graph.nodes[i][j].getSegment()) {
-                            img.setRGB(j,i, color.getRGB());
-
-
-                        }
-                    }
-                }
-            }
-        }
-        try {
-            img = scale(img, (int) (img.getWidth()/0.5), (int) (img.getHeight()/0.5));
-            File f = new File(type + "-" + num + ".jpg");
-            ImageIO.write(img, "jpg", f);
-        } catch (IOException e) {
-            System.out.println("IMAGE FAILED TO BE WRITTEN!");
-        }
-    }*/
 
     public static void makeDifferentColors(LoadImage image, Individual ind) {
         BufferedImage img = image.IMAGE;
@@ -197,8 +145,7 @@ public class Main extends Application {
     public static void colorBigAndWrite(LoadImage image, int type, int num,
                                         Individual ind) {
         BufferedImage img = image.IMAGE;
-        System.out.println(img.getHeight());
-        System.out.println(img.getWidth());
+        //img = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         java.awt.Color color;
         color = new java.awt.Color(255, 255, 255);
         if (type == 1) {
@@ -222,7 +169,6 @@ public class Main extends Application {
                     int[] coordinateXY = coordinates[j];
                     int x = coordinateXY[0];
                     int y = coordinateXY[1];
-                    //System.out.println(x+"      "+y);
                     img.setRGB(x,y, color.getRGB());
                 }
             }
@@ -231,7 +177,6 @@ public class Main extends Application {
                 int y = Individual.getRow(edgePixel);
                 img.setRGB(x,y,color.getRGB());
             }
-            //System.out.println(edgePixel+"      "+ind.getGenoType().length);
         }
         try {
             File f = new File(type + "-" + num + ".jpg");

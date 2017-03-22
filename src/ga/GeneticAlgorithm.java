@@ -23,7 +23,10 @@ public class GeneticAlgorithm {
     }
 
     public Individual mainLoop() {
-        Scanner reader = new Scanner(System.in);  // Reading from System.in
+        Scanner reader = new Scanner(System.in);
+        Individual bestInd = findBestInd();
+        Main.colorBigAndWrite(loadImage, 2, 2, bestInd);
+        Main.colorBigAndWrite(loadImage, 1, 1, bestInd);
         for (int i = 0; i < Main.NUMBER_OF_GENERATIONS; i++) {
 
 
@@ -34,20 +37,25 @@ public class GeneticAlgorithm {
             //System.out.println("crossover finished # "+ i);
             this.population = new Population(loadImage, true);
             this.population.copyIndividualsToNewPopulation(children);
-            mutation(population);
+            mutation(archivePopulation);
             //System.out.println("mutated # "+ i);
             updateFitness();
             System.out.println(i+"  "+archivePopulation);
             selection();
-            if ((i+1)%10 == 0) {
-                System.out.println("press space to continue and q to quit");
+            if ((i+1)%1 == 0) {
+                bestInd = findBestInd();
+                Main.colorBigAndWrite(loadImage, 1, 1, bestInd);
+                Main.colorBigAndWrite(loadImage, 2, 2, bestInd);
+                System.out.println("Number of segments: "
+                        +bestInd.findNumberOfSegments());
+                System.out.println("press c to continue and q to quit");
                 if (reader.next().equals("q")) {
                     break;
                 }
             }
         }
         System.out.println("DONE");
-        return this.archivePopulation.getPopulation().get(0);
+        return findBestInd();
     }
 
     private void updateFitness() {
@@ -55,6 +63,18 @@ public class GeneticAlgorithm {
         this.archivePopulation.updateScores();
         this.population.updateFitnesses(archivePopulation);
         this.archivePopulation.updateFitnesses(population);
+    }
+
+    private Individual findBestInd() {
+        List<Individual> inds = getJoinedPopulations();
+        Individual bestInd = inds.get(0);
+        for (int i = 1; i < inds.size(); i++) {
+            Individual a = inds.get(i);
+            if (a.getNumberOfSegments() < bestInd.getNumberOfSegments()) {
+                bestInd = a;
+            }
+        }
+        return bestInd;
     }
 
     private void selection() {
@@ -69,13 +89,6 @@ public class GeneticAlgorithm {
         this.archivePopulation = nextArchivedPopulation;
     }
 
-    private ArrayList<Individual> getNonDominatedIndividuals() {
-        ArrayList<Individual> nonDominated = new ArrayList<>();
-        nonDominated.addAll(this.population.getNonDominatedIndividuals());
-        nonDominated.addAll(this.archivePopulation.getNonDominatedIndividuals());
-        return nonDominated;
-    }
-
     private void mutation(Population population) {
         ArrayList<Individual> inds = population.getPopulation();
         for (int i = 0; i < inds.size(); i++) {
@@ -85,9 +98,11 @@ public class GeneticAlgorithm {
 
     private void mutateIndividual(Individual individual) {
         int estimatedMutations = (int) (genoTypeSize*Main.MUTATION_RATE);
+        int counter = 0;
         while (Math.random() > 1.0/estimatedMutations) {
             int geneIndex = (int) (Math.random()*genoTypeSize);
             individual.mutateGene(geneIndex);
+            counter ++;
         }
     }
     
@@ -98,9 +113,12 @@ public class GeneticAlgorithm {
             Individual father = inds.get(i);
             int motherIndex = (int) (Math.random()*inds.size());
             Individual mother = inds.get(motherIndex);
-            Individual child = getChild(father, mother);
-            children.add(child);
+            if (mother != father) {
+                Individual child = getChild(father, mother);
+                children.add(child);
+            }
         }
+
         return children;
     }
 
@@ -111,7 +129,18 @@ public class GeneticAlgorithm {
                 child.editGeneType(i, mother.getGenoType()[i]);
             }
         }
-        return child;    
+        return child;
+    }
+
+    private boolean isSame(Individual a, Individual b) {
+        for (int i = 0; i < a.getGenoType().length; i++) {
+            int aGene = a.getGenoType()[i];
+            int bGene = b.getGenoType()[i];
+            if (aGene != bGene) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private Individual getIndividual(Population pop, int index) {
