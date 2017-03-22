@@ -1,5 +1,7 @@
 package inputOutput;
 
+import ga.Individual;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -15,27 +17,46 @@ public class LoadImage {
 
     public static final String IMAGE_PATH = "Test Image 3/";
     public static final String IMAGE_NAME = "/Test image.jpg";
+    public static final int imageNumber = 1;
+
+    // =====================
+    public static int imageHeight;
+    public static int imageWidth;
+    // =====================
 
     // "Test Image 3/1/Test image.jpg"
 
+    static {
+        String s = IMAGE_PATH+Main.IMAGE_NUMBER+IMAGE_NAME;
+        try {
+            InputStream inputStream = new FileInputStream(s);
+            BufferedImage image;
+            image = ImageIO.read(inputStream);
+            IMAGE = image;
+            imageHeight = image.getHeight();
+            imageWidth = image.getWidth();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static BufferedImage IMAGE;
     private final int[][] imageArray;
     private final int[][] imgArray;
     private int height;
     private int width;
 
-    public LoadImage(int imageNumber) throws IOException {
-        String s = IMAGE_PATH+imageNumber+IMAGE_NAME;
-        InputStream inputStream = new FileInputStream(s);
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
+    public LoadImage() {
+        this.imgArray = convertToArrayRGB(IMAGE);
+        //image = scale(image, LoadImage.imageNumber);
+        int[][] temp = convertToArrayRGB(IMAGE);
+        if (imageNumber == 1) {
+            this.imageArray = temp;
         }
-        this.imgArray = convertToArrayRGB(image);
-        int scale = 10;
-        image = scale(image, scale);
-        this.imageArray = convertToArrayRGB(image);
+        else {
+            this.imageArray = convertImgArray(temp, imageNumber);
+        }
     }
 
     public static BufferedImage scale(BufferedImage sbi, int scale) {
@@ -87,6 +108,39 @@ public class LoadImage {
 
     public int[][] getImageArray() {
         return imageArray;
+    }
+
+    private int[][] convertImgArray(int[][] imageArray, int size) {
+        int newWidth = width/size;
+        int newHeight = height/size;
+        int newSize = newWidth*newHeight;
+        int[][] newImageArray = new int[newSize][3];
+        for (int i = 0; i < newImageArray.length; i++) {
+            int[][] coordinates = Main.getCoordinatesXY(IMAGE, i);
+            int[] averageColor = findAverageColorValues(
+                    imageArray, coordinates);
+            newImageArray[i] = averageColor;
+        }
+        return newImageArray;
+    }
+
+    private int[] findAverageColorValues(int[][] imageArray,
+                                         int[][] coordinates) {
+        int[] averageValues = new int[3];
+        for (int i = 0; i < coordinates.length; i++) {
+            int[] coordinateXY = coordinates[i];
+            int row = coordinateXY[1];
+            int col = coordinateXY[0];
+            int index = Individual.getRowCol(row, col);
+            int[] colorValues = imageArray[index];
+            for (int j = 0; j < 3; j++) {
+                averageValues[j] += colorValues[j];
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            averageValues[i] = averageValues[i]/coordinates.length;
+        }
+        return averageValues;
     }
 
     public String toString() {

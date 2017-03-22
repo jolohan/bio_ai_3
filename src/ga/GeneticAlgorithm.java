@@ -25,6 +25,11 @@ public class GeneticAlgorithm {
     public Individual mainLoop() {
         Scanner reader = new Scanner(System.in);  // Reading from System.in
         for (int i = 0; i < Main.NUMBER_OF_GENERATIONS; i++) {
+
+
+            // check if copy works
+
+
             ArrayList<Individual> children = crossover(archivePopulation);
             //System.out.println("crossover finished # "+ i);
             this.population = new Population(loadImage, true);
@@ -36,13 +41,12 @@ public class GeneticAlgorithm {
             selection();
             if ((i+1)%10 == 0) {
                 System.out.println("press space to continue and q to quit");
-                String s = reader.next();
-                if (s.equals("q")) {
+                if (reader.next().equals("q")) {
                     break;
                 }
             }
         }
-
+        System.out.println("DONE");
         return this.archivePopulation.getPopulation().get(0);
     }
 
@@ -101,15 +105,12 @@ public class GeneticAlgorithm {
     }
 
     private Individual getChild(Individual father, Individual mother) {
-        int[] childGenoType = new int[genoTypeSize];
+        Individual child = father.makeCopy(loadImage.getImageArray());
         for (int i = 0; i < genoTypeSize; i++) {
-            if (Math.random() < Main.CROSSOVER_RATE) {
-                childGenoType[i] = father.getGenoType()[i];
+            if (Math.random() > Main.CROSSOVER_RATE) {
+                child.editGeneType(i, mother.getGenoType()[i]);
             }
-            else { childGenoType[i] = mother.getGenoType()[i]; }
         }
-        Individual child = new Individual(
-                father.imageArray, childGenoType);
         return child;    
     }
 

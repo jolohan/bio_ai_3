@@ -149,12 +149,22 @@ public class Population {
         return averageScore/population.size();
     }
 
+    private double getAverageSegmenation() {
+        double sum = 0;
+        for (int i = 0; i < population.size(); i++) {
+            Individual a = population.get(i);
+            sum += a.getNumberOfSegments();
+        }
+        return sum/population.size();
+    }
+
     // print average fitness, and average scores
     public String toString() {
         String s = "\nAverage fitness: " + getAverageFitness();
         s += "\nAverage overall deviation: " + getAverageScore(0);
         s += "\nAverage edge value: " + getAverageScore(1);
         s += "\nAverage connection: " + getAverageScore(2);
+        s += "\nAverage number of segments " + getAverageSegmenation();
         s += "\n";
 
         return s;

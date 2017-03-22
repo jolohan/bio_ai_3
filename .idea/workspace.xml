@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a604292-0088-42f1-9746-fab2dca6cadd" name="Default" comment="" />
+    <list default="true" id="8a604292-0088-42f1-9746-fab2dca6cadd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ga/IntComp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" afterPath="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ga/Individual.java" afterPath="$PROJECT_DIR$/src/ga/Individual.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ga/Population.java" afterPath="$PROJECT_DIR$/src/ga/Population.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/inputOutput/LoadImage.java" afterPath="$PROJECT_DIR$/src/inputOutput/LoadImage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/inputOutput/Main.java" afterPath="$PROJECT_DIR$/src/inputOutput/Main.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,55 +27,47 @@
       <file leaf-file-name="LoadImage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/inputOutput/LoadImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+            <state relative-caret-position="360">
+              <caret line="75" column="20" lean-forward="false" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
               <folding>
                 <element signature="docComment;class#LoadImage#0" expanded="false" />
                 <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
-                <element signature="e#2666#2667#0" expanded="true" />
-                <element signature="e#2699#2700#0" expanded="true" />
+                <element signature="e#3170#3171#0" expanded="true" />
+                <element signature="e#3203#3204#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BufferedImage.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/awt/image/BufferedImage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12960">
-              <caret line="916" column="0" lean-forward="false" selection-start-line="916" selection-start-column="0" selection-end-line="916" selection-end-column="0" />
-              <folding>
-                <element signature="e#37786#37787#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Individual.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Individual.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ga/Individual.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="100" column="44" lean-forward="false" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
+            <state relative-caret-position="535">
+              <caret line="173" column="62" lean-forward="false" selection-start-line="173" selection-start-column="62" selection-end-line="173" selection-end-column="62" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="docComment;class#Individual#0" expanded="false" />
+                <element signature="method#Individual#0;class#Individual#0" expanded="false" />
+                <element signature="method#growSingleRegion#0;class#Individual#0" expanded="false" />
+                <element signature="method#getMostSimilarNeighbour#0;class#Individual#0" expanded="false" />
                 <element signature="method#isSimilar#0;class#Individual#0" expanded="false" />
-                <element signature="method#printGenoType#0;class#Individual#0" expanded="false" />
-                <element signature="method#toString#0;class#Individual#0" expanded="false" />
-                <element signature="e#16105#16121#0" expanded="false" />
-                <element signature="method#mutateGene#0;class#Individual#0" expanded="false" />
-                <element signature="method#getRowCol#1;class#Individual#0" expanded="false" />
+                <element signature="e#13334#13350#0" expanded="false" />
+                <element signature="e#14581#14582#0" expanded="true" />
+                <element signature="e#14631#14632#0" expanded="true" />
+                <element signature="method#getUnvisitedNeighbours#0;class#Individual#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bio_ai_3.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bio_ai_3.iml">
+      <file leaf-file-name="IntComp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ga/IntComp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="150">
+              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+              <folding>
+                <element signature="e#183#184#0" expanded="true" />
+                <element signature="e#209#210#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,22 +75,20 @@
       <file leaf-file-name="Population.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ga/Population.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="72" column="14" lean-forward="false" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+            <state relative-caret-position="557">
+              <caret line="166" column="71" lean-forward="false" selection-start-line="166" selection-start-column="71" selection-end-line="166" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4688#4689#0" expanded="true" />
-                <element signature="e#4727#4728#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneticAlgorithm.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GeneticAlgorithm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ga/GeneticAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+            <state relative-caret-position="360">
+              <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,8 +99,8 @@
       <file leaf-file-name="FitnessComparator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ga/FitnessComparator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="39" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="15" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -111,8 +109,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+            <state relative-caret-position="495">
+              <caret line="33" column="45" lean-forward="false" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,15 +118,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="11 seg.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test Image 3/1/11 seg.jpg">
+      <file leaf-file-name="segmentColours.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/segmentColours.jpg">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test image.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test Image 3/1/Test image.jpg">
+      <file leaf-file-name="1-1.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/1-1.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2-1.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-1.jpg">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
@@ -151,7 +156,6 @@
       <find>pixel</find>
       <find>int[] visited</find>
       <find>visited ==</find>
-      <find>segmenation</find>
       <find>edgePixel</find>
       <find>edgePixels</find>
       <find>whichScores</find>
@@ -159,9 +163,19 @@
       <find>System</find>
       <find>getUnvisited</find>
       <find>SYstem</find>
+      <find>genoType</find>
+      <find>segmenation</find>
+      <find>segmentation</find>
+      <find>editgen</find>
+      <find>img</find>
+      <find>setedgev</find>
+      <find>edge</find>
+      <find>color</find>
+      <find>findHig</find>
     </findStrings>
     <replaceStrings>
       <replace>i</replace>
+      <replace>genoType</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -183,9 +197,11 @@
         <option value="$PROJECT_DIR$/src/ga/FitnessComparator.java" />
         <option value="$PROJECT_DIR$/src/ga/Population.java" />
         <option value="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/inputOutput/Main.java" />
         <option value="$PROJECT_DIR$/src/inputOutput/LoadImage.java" />
+        <option value="$PROJECT_DIR$/src/inputOutput/Main.java" />
+        <option value="$PROJECT_DIR$/src/ga/IntegerComparator.java" />
         <option value="$PROJECT_DIR$/src/ga/Individual.java" />
+        <option value="$PROJECT_DIR$/src/ga/IntComp.java" />
       </list>
     </option>
   </component>
@@ -198,7 +214,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-2" />
     <option name="y" value="23" />
-    <option name="width" value="1330" />
+    <option name="width" value="1441" />
     <option name="height" value="873" />
   </component>
   <component name="ProjectView">
@@ -216,6 +232,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -225,20 +243,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bio_ai_3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bio_ai_3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bio_ai_3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test Image 3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -280,8 +284,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -720,31 +722,33 @@
       <workItem from="1489836630617" duration="10261000" />
       <workItem from="1489934259670" duration="66704000" />
       <workItem from="1490186806553" duration="26000" />
+      <workItem from="1490186938759" duration="20907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100463000" />
+    <option name="totallyTimeSpent" value="121370000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="23" width="1330" height="873" extended-state="0" />
-    <editor active="false" />
+    <frame x="-2" y="23" width="1441" height="873" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4340796" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3442054" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14887218" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13740458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -756,7 +760,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -771,37 +774,31 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/inputOutput/LoadImage.java</url>
-          <line>92</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ga/Individual.java</url>
-          <line>528</line>
+          <line>442</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/inputOutput/Main.java</url>
-          <line>23</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/inputOutput/LoadImage.java</url>
-          <line>89</line>
+          <url>file://$PROJECT_DIR$/src/ga/Individual.java</url>
+          <line>29</line>
           <properties />
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/inputOutput/LoadImage.java</url>
-          <line>65</line>
-          <properties />
-          <option name="timeStamp" value="13" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ga/Individual.java</url>
+          <line>474</line>
+          <properties class="ga.Individual" method="isEdgePixel" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="14" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -810,6 +807,26 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test Image 3/1/11 seg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test Image 3/1/Test image.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/inputOutput/LoadImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -817,8 +834,8 @@
           <folding>
             <element signature="docComment;class#LoadImage#0" expanded="false" />
             <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
-            <element signature="e#2666#2667#0" expanded="true" />
-            <element signature="e#2699#2700#0" expanded="true" />
+            <element signature="e#3170#3171#0" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -828,7 +845,62 @@
         <state relative-caret-position="12960">
           <caret line="916" column="0" lean-forward="false" selection-start-line="916" selection-start-column="0" selection-end-line="916" selection-end-column="0" />
           <folding>
-            <element signature="e#37786#37787#0" expanded="true" />
+            <element signature="e#0#64200#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#33733#34108#0" expanded="false" />
+            <element signature="e#34107#34108#0" expanded="false" />
+            <element signature="e#34806#34807#0" expanded="false" />
+            <element signature="e#34838#34839#0" expanded="false" />
+            <element signature="e#35026#35027#0" expanded="false" />
+            <element signature="e#35059#35060#0" expanded="false" />
+            <element signature="e#35251#35252#0" expanded="false" />
+            <element signature="e#35280#35281#0" expanded="false" />
+            <element signature="e#36532#36533#0" expanded="false" />
+            <element signature="e#36588#36589#0" expanded="false" />
+            <element signature="e#43542#43543#0" expanded="false" />
+            <element signature="e#43582#43583#0" expanded="false" />
+            <element signature="e#43750#43751#0" expanded="false" />
+            <element signature="e#43791#43792#0" expanded="false" />
+            <element signature="e#44009#44010#0" expanded="false" />
+            <element signature="e#44049#44050#0" expanded="false" />
+            <element signature="e#44270#44271#0" expanded="false" />
+            <element signature="e#44311#44312#0" expanded="false" />
+            <element signature="e#45978#45979#0" expanded="false" />
+            <element signature="e#46018#46019#0" expanded="false" />
+            <element signature="e#47114#47115#0" expanded="false" />
+            <element signature="e#47153#47154#0" expanded="false" />
+            <element signature="e#49022#49023#0" expanded="false" />
+            <element signature="e#49078#49079#0" expanded="false" />
+            <element signature="e#51113#51114#0" expanded="false" />
+            <element signature="e#51140#51141#0" expanded="false" />
+            <element signature="e#52035#52036#0" expanded="false" />
+            <element signature="e#52074#52075#0" expanded="false" />
+            <element signature="e#52315#52316#0" expanded="false" />
+            <element signature="e#52354#52355#0" expanded="false" />
+            <element signature="e#52609#52610#0" expanded="false" />
+            <element signature="e#52655#52656#0" expanded="false" />
+            <element signature="e#52841#52842#0" expanded="false" />
+            <element signature="e#52865#52866#0" expanded="false" />
+            <element signature="e#53051#53052#0" expanded="false" />
+            <element signature="e#53075#53076#0" expanded="false" />
+            <element signature="e#53267#53268#0" expanded="false" />
+            <element signature="e#53291#53292#0" expanded="false" />
+            <element signature="e#53483#53484#0" expanded="false" />
+            <element signature="e#53507#53508#0" expanded="false" />
+            <element signature="e#53638#53639#0" expanded="false" />
+            <element signature="e#53677#53678#0" expanded="false" />
+            <element signature="e#53811#53812#0" expanded="false" />
+            <element signature="e#53851#53852#0" expanded="false" />
+            <element signature="e#54124#54125#0" expanded="false" />
+            <element signature="e#54180#54181#0" expanded="false" />
+            <element signature="e#54453#54454#0" expanded="false" />
+            <element signature="e#54509#54510#0" expanded="false" />
+            <element signature="e#62680#62681#0" expanded="false" />
+            <element signature="e#62707#62708#0" expanded="false" />
+            <element signature="e#63179#63180#0" expanded="false" />
+            <element signature="e#63208#63209#0" expanded="false" />
+            <element signature="e#64145#64146#0" expanded="false" />
+            <element signature="e#64196#64197#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -838,14 +910,15 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;class#Individual#0" expanded="false" />
+            <element signature="method#Individual#0;class#Individual#0" expanded="false" />
+            <element signature="method#growSingleRegion#0;class#Individual#0" expanded="false" />
+            <element signature="method#getMostSimilarNeighbour#0;class#Individual#0" expanded="false" />
             <element signature="method#isSimilar#0;class#Individual#0" expanded="false" />
-            <element signature="method#printGenoType#0;class#Individual#0" expanded="false" />
-            <element signature="method#toString#0;class#Individual#0" expanded="false" />
-            <element signature="e#16105#16121#0" expanded="false" />
-            <element signature="method#mutateGene#0;class#Individual#0" expanded="false" />
-            <element signature="method#getRowCol#1;class#Individual#0" expanded="false" />
+            <element signature="e#13334#13350#0" expanded="false" />
+            <element signature="e#14581#14582#0" expanded="true" />
+            <element signature="e#14631#14632#0" expanded="true" />
+            <element signature="method#getUnvisitedNeighbours#0;class#Individual#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -864,8 +937,6 @@
           <caret line="72" column="14" lean-forward="false" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4688#4689#0" expanded="true" />
-            <element signature="e#4727#4728#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -915,8 +986,8 @@
           <folding>
             <element signature="docComment;class#LoadImage#0" expanded="false" />
             <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
-            <element signature="e#2666#2667#0" expanded="true" />
-            <element signature="e#2699#2700#0" expanded="true" />
+            <element signature="e#3170#3171#0" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -928,8 +999,8 @@
           <folding>
             <element signature="docComment;class#LoadImage#0" expanded="false" />
             <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
-            <element signature="e#2666#2667#0" expanded="true" />
-            <element signature="e#2699#2700#0" expanded="true" />
+            <element signature="e#3170#3171#0" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -939,14 +1010,15 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;class#Individual#0" expanded="false" />
+            <element signature="method#Individual#0;class#Individual#0" expanded="false" />
+            <element signature="method#growSingleRegion#0;class#Individual#0" expanded="false" />
+            <element signature="method#getMostSimilarNeighbour#0;class#Individual#0" expanded="false" />
             <element signature="method#isSimilar#0;class#Individual#0" expanded="false" />
-            <element signature="method#printGenoType#0;class#Individual#0" expanded="false" />
-            <element signature="method#toString#0;class#Individual#0" expanded="false" />
-            <element signature="e#16105#16121#0" expanded="false" />
-            <element signature="method#mutateGene#0;class#Individual#0" expanded="false" />
-            <element signature="method#getRowCol#1;class#Individual#0" expanded="false" />
+            <element signature="e#13334#13350#0" expanded="false" />
+            <element signature="e#14581#14582#0" expanded="true" />
+            <element signature="e#14631#14632#0" expanded="true" />
+            <element signature="method#getUnvisitedNeighbours#0;class#Individual#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -957,8 +1029,6 @@
           <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4688#4689#0" expanded="true" />
-            <element signature="e#4727#4728#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1006,8 +1076,8 @@
           <folding>
             <element signature="docComment;class#LoadImage#0" expanded="false" />
             <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
-            <element signature="e#2666#2667#0" expanded="true" />
-            <element signature="e#2699#2700#0" expanded="true" />
+            <element signature="e#3170#3171#0" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1017,14 +1087,15 @@
         <state relative-caret-position="75">
           <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;class#Individual#0" expanded="false" />
+            <element signature="method#Individual#0;class#Individual#0" expanded="false" />
+            <element signature="method#growSingleRegion#0;class#Individual#0" expanded="false" />
+            <element signature="method#getMostSimilarNeighbour#0;class#Individual#0" expanded="false" />
             <element signature="method#isSimilar#0;class#Individual#0" expanded="false" />
-            <element signature="method#printGenoType#0;class#Individual#0" expanded="false" />
-            <element signature="method#toString#0;class#Individual#0" expanded="false" />
-            <element signature="e#16105#16121#0" expanded="false" />
-            <element signature="method#mutateGene#0;class#Individual#0" expanded="false" />
-            <element signature="method#getRowCol#1;class#Individual#0" expanded="false" />
+            <element signature="e#13334#13350#0" expanded="false" />
+            <element signature="e#14581#14582#0" expanded="true" />
+            <element signature="e#14631#14632#0" expanded="true" />
+            <element signature="method#getUnvisitedNeighbours#0;class#Individual#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1035,8 +1106,6 @@
           <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4688#4689#0" expanded="true" />
-            <element signature="e#4727#4728#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1096,11 +1165,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test Image 3/1/Test image.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bio_ai_3.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1114,77 +1178,162 @@
         <state relative-caret-position="12960">
           <caret line="916" column="0" lean-forward="false" selection-start-line="916" selection-start-column="0" selection-end-line="916" selection-end-column="0" />
           <folding>
-            <element signature="e#37786#37787#0" expanded="true" />
+            <element signature="e#0#64200#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#33733#34108#0" expanded="false" />
+            <element signature="e#34107#34108#0" expanded="false" />
+            <element signature="e#34806#34807#0" expanded="false" />
+            <element signature="e#34838#34839#0" expanded="false" />
+            <element signature="e#35026#35027#0" expanded="false" />
+            <element signature="e#35059#35060#0" expanded="false" />
+            <element signature="e#35251#35252#0" expanded="false" />
+            <element signature="e#35280#35281#0" expanded="false" />
+            <element signature="e#36532#36533#0" expanded="false" />
+            <element signature="e#36588#36589#0" expanded="false" />
+            <element signature="e#43542#43543#0" expanded="false" />
+            <element signature="e#43582#43583#0" expanded="false" />
+            <element signature="e#43750#43751#0" expanded="false" />
+            <element signature="e#43791#43792#0" expanded="false" />
+            <element signature="e#44009#44010#0" expanded="false" />
+            <element signature="e#44049#44050#0" expanded="false" />
+            <element signature="e#44270#44271#0" expanded="false" />
+            <element signature="e#44311#44312#0" expanded="false" />
+            <element signature="e#45978#45979#0" expanded="false" />
+            <element signature="e#46018#46019#0" expanded="false" />
+            <element signature="e#47114#47115#0" expanded="false" />
+            <element signature="e#47153#47154#0" expanded="false" />
+            <element signature="e#49022#49023#0" expanded="false" />
+            <element signature="e#49078#49079#0" expanded="false" />
+            <element signature="e#51113#51114#0" expanded="false" />
+            <element signature="e#51140#51141#0" expanded="false" />
+            <element signature="e#52035#52036#0" expanded="false" />
+            <element signature="e#52074#52075#0" expanded="false" />
+            <element signature="e#52315#52316#0" expanded="false" />
+            <element signature="e#52354#52355#0" expanded="false" />
+            <element signature="e#52609#52610#0" expanded="false" />
+            <element signature="e#52655#52656#0" expanded="false" />
+            <element signature="e#52841#52842#0" expanded="false" />
+            <element signature="e#52865#52866#0" expanded="false" />
+            <element signature="e#53051#53052#0" expanded="false" />
+            <element signature="e#53075#53076#0" expanded="false" />
+            <element signature="e#53267#53268#0" expanded="false" />
+            <element signature="e#53291#53292#0" expanded="false" />
+            <element signature="e#53483#53484#0" expanded="false" />
+            <element signature="e#53507#53508#0" expanded="false" />
+            <element signature="e#53638#53639#0" expanded="false" />
+            <element signature="e#53677#53678#0" expanded="false" />
+            <element signature="e#53811#53812#0" expanded="false" />
+            <element signature="e#53851#53852#0" expanded="false" />
+            <element signature="e#54124#54125#0" expanded="false" />
+            <element signature="e#54180#54181#0" expanded="false" />
+            <element signature="e#54453#54454#0" expanded="false" />
+            <element signature="e#54509#54510#0" expanded="false" />
+            <element signature="e#62680#62681#0" expanded="false" />
+            <element signature="e#62707#62708#0" expanded="false" />
+            <element signature="e#63179#63180#0" expanded="false" />
+            <element signature="e#63208#63209#0" expanded="false" />
+            <element signature="e#64145#64146#0" expanded="false" />
+            <element signature="e#64196#64197#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Test Image 3/1/Test image.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ga/Population.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="72" column="14" lean-forward="false" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+        <state relative-caret-position="557">
+          <caret line="166" column="71" lean-forward="false" selection-start-line="166" selection-start-column="71" selection-end-line="166" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4688#4689#0" expanded="true" />
-            <element signature="e#4727#4728#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ga/GeneticAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1-1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/segmentColours.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inputOutput/LoadImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="75" column="20" lean-forward="false" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+          <folding>
+            <element signature="docComment;class#LoadImage#0" expanded="false" />
+            <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
+            <element signature="e#3170#3171#0" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+        <state relative-caret-position="495">
+          <caret line="33" column="45" lean-forward="false" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inputOutput/LoadImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
-          <folding>
-            <element signature="docComment;class#LoadImage#0" expanded="false" />
-            <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
-            <element signature="e#2666#2667#0" expanded="true" />
-            <element signature="e#2699#2700#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ga/Individual.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="100" column="44" lean-forward="false" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Individual#0" expanded="false" />
-            <element signature="method#isSimilar#0;class#Individual#0" expanded="false" />
-            <element signature="method#printGenoType#0;class#Individual#0" expanded="false" />
-            <element signature="method#toString#0;class#Individual#0" expanded="false" />
-            <element signature="e#16105#16121#0" expanded="false" />
-            <element signature="method#mutateGene#0;class#Individual#0" expanded="false" />
-            <element signature="method#getRowCol#1;class#Individual#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ga/FitnessComparator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="39" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="15" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ga/GeneticAlgorithm.java">
+    <entry file="file://$PROJECT_DIR$/src/ga/IntComp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+        <state relative-caret-position="150">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ga/Individual.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="173" column="62" lean-forward="false" selection-start-line="173" selection-start-column="62" selection-end-line="173" selection-end-column="62" />
+          <folding>
+            <element signature="docComment;class#Individual#0" expanded="false" />
+            <element signature="method#Individual#0;class#Individual#0" expanded="false" />
+            <element signature="method#growSingleRegion#0;class#Individual#0" expanded="false" />
+            <element signature="method#getMostSimilarNeighbour#0;class#Individual#0" expanded="false" />
+            <element signature="method#isSimilar#0;class#Individual#0" expanded="false" />
+            <element signature="e#13334#13350#0" expanded="false" />
+            <element signature="e#14581#14582#0" expanded="true" />
+            <element signature="e#14631#14632#0" expanded="true" />
+            <element signature="method#getUnvisitedNeighbours#0;class#Individual#0" expanded="false" />
           </folding>
         </state>
       </provider>
