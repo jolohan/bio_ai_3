@@ -40,11 +40,11 @@ public class Main extends Application {
 
     public static final int POPULATION_SIZE = 10;
     public static final int ARCHIVE_SIZE = POPULATION_SIZE;
-    public static final int NUMBER_OF_GENERATIONS= 500;
+    public static final int NUMBER_OF_GENERATIONS= 5;
 
     // ========================================================
 
-    public static final int IMAGE_NUMBER = 3;
+    public static final int IMAGE_NUMBER = 2;
 
     public static void main(String[] args) {
         launch();
@@ -68,7 +68,13 @@ public class Main extends Application {
         this.width = img.getWidth();
         this.height = img.getHeight();
         this.img = img;
-        makeDifferentColors(img, bestInd);
+        String co = "";
+        //Runtime.getRuntime().exec("/bin/sh", "-c", co);
+        //Runtime.getRuntime().exec(co);
+        ProcessBuilder pb = new ProcessBuilder(
+                "/Users/johan/Documents/bio_ai_3/myshellScript.sh", "myArg1", "myArg2");
+        Process p = pb.start();
+
     }
 
     @Override
@@ -142,21 +148,24 @@ public class Main extends Application {
         }
     }
 
-    public static void colorBigAndWrite(LoadImage image, int type, int num,
+    public static void colorBigAndWrite(LoadImage image, int type,
                                         Individual ind) {
         BufferedImage img = image.IMAGE;
-        //img = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        img = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         java.awt.Color color;
         color = new java.awt.Color(255, 255, 255);
-        if (type == 1) {
             for (int i = 0; i < img.getHeight(); i++) {
                 for (int j = 0; j < img.getWidth(); j++) {
-                    img.setRGB(j,i, color.getRGB());
+                    if (type == 1) {
+                        img.setRGB(j,i, color.getRGB());
+                    }
+                    else if (type == 2) {
+                        img.setRGB(j, i, image.IMAGE.getRGB(j, i));
+                    }
                 }
             }
-            color = new java.awt.Color(0, 0, 0);
-        }
-        else if (type == 2) {
+        color = new java.awt.Color(0, 0, 0);
+        if (type == 2) {
             color = new java.awt.Color(0, 255, 0);
         }
         ind.updateEdgePixels();
@@ -179,7 +188,7 @@ public class Main extends Application {
             }
         }
         try {
-            File f = new File(type + "-" + num + ".jpg");
+            File f = new File("Test Image 3/0_Results/"+type+ "-" + IMAGE_NUMBER + ".jpg");
             ImageIO.write(img, "jpg", f);
         } catch (IOException e) {
             System.out.println("IMAGE FAILED TO BE WRITTEN!");

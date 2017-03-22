@@ -25,8 +25,8 @@ public class GeneticAlgorithm {
     public Individual mainLoop() {
         Scanner reader = new Scanner(System.in);
         Individual bestInd = findBestInd();
-        Main.colorBigAndWrite(loadImage, 2, 2, bestInd);
-        Main.colorBigAndWrite(loadImage, 1, 1, bestInd);
+        Main.colorBigAndWrite(loadImage, 2, bestInd);
+        Main.colorBigAndWrite(loadImage, 1, bestInd);
         for (int i = 0; i < Main.NUMBER_OF_GENERATIONS; i++) {
 
 
@@ -37,21 +37,19 @@ public class GeneticAlgorithm {
             //System.out.println("crossover finished # "+ i);
             this.population = new Population(loadImage, true);
             this.population.copyIndividualsToNewPopulation(children);
-            mutation(archivePopulation);
+            mutation(population);
             //System.out.println("mutated # "+ i);
             updateFitness();
             System.out.println(i+"  "+archivePopulation);
             selection();
             if ((i+1)%1 == 0) {
                 bestInd = findBestInd();
-                Main.colorBigAndWrite(loadImage, 1, 1, bestInd);
-                Main.colorBigAndWrite(loadImage, 2, 2, bestInd);
+                Main.colorBigAndWrite(loadImage, 1, bestInd);
+                Main.colorBigAndWrite(loadImage, 2, bestInd);
                 System.out.println("Number of segments: "
                         +bestInd.findNumberOfSegments());
                 System.out.println("press c to continue and q to quit");
-                if (reader.next().equals("q")) {
-                    break;
-                }
+                //if (reader.next().equals("q")) { break; }
             }
         }
         System.out.println("DONE");

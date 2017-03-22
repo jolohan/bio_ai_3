@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 /**
  * Created by johan on 14/03/17.
@@ -37,6 +38,21 @@ public class LoadImage {
             imageWidth = image.getWidth();
 
         } catch (IOException e) {
+            try {
+                System.out.println("couldn't read file name." +
+                        "\ninput filename: ");
+                Scanner scanner = new Scanner(System.in);
+                s = scanner.next();
+                InputStream inputStream = new FileInputStream(s);
+                BufferedImage image;
+                image = ImageIO.read(inputStream);
+                IMAGE = image;
+                imageHeight = image.getHeight();
+                imageWidth = image.getWidth();
+            }
+            catch (Exception ei) {
+                ei.printStackTrace();
+            }
             e.printStackTrace();
         }
     }
@@ -73,8 +89,8 @@ public class LoadImage {
 
     // Changed to 3x2 image while testing
     private int[][] convertToArrayRGB(BufferedImage image) {
-        int width = image.getWidth();
-        int height = image.getHeight();
+        int width = 10;//image.getWidth();
+        int height = 10;//image.getHeight();
         setHeightAndWidth(height, width);
         int numberOfColors = 3;
         int[][] result = new int[height*width][numberOfColors];
