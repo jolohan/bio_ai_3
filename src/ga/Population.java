@@ -48,6 +48,15 @@ public class Population {
         }
     }
 
+    double getAverageFitness() {
+        double totalFitness = 0;
+        for (int i = 0; i < getPopulation().size(); i++) {
+            totalFitness += getPopulation().get(i).getFitness();
+        }
+        double fitness = totalFitness/getPopulation().size();
+        return fitness;
+    }
+
     void updateFitnesses(Population otherPopulation) {
         for (int i = 0; i < population.size(); i++) {
             Individual a = population.get(i);
@@ -61,6 +70,7 @@ public class Population {
             numberOfDominators += otherPopulation.getNumberOfDominators(a);
             double fitnessScore = density + numberOfDominators;
             a.updateFitness(fitnessScore);
+            //System.out.println(a.getFitness());
         }
     }
 
@@ -72,8 +82,11 @@ public class Population {
 
     private ArrayList<Double> getDistanceInObjectiveSpace(Individual a) {
         ArrayList<Double> distances = new ArrayList<>(population.size());
-        for (int i = 0; i < distances.size(); i++) {
+        for (int i = 0; i < population.size(); i++) {
             distances.add(getDistancesInObjectiveSpace(a, population.get(i)));
+        }
+        if (distances.size() < Main.Kth_NEAREST_NEIGHBOUR) {
+            System.out.println("couldnt find object space neighbours");
         }
         return distances;
     }
@@ -98,7 +111,7 @@ public class Population {
             dominated = true;
             for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
                 if (Main.WHICH_SCORES[j]){
-                    if (aScores[j] > bScores[j]) {
+                    if (aScores[j] < bScores[j]) {
                         dominated = false;
                         break;
                     }
@@ -125,6 +138,26 @@ public class Population {
 
     public void addIndividuals(ArrayList<Individual> inds) {
         population.addAll(inds);
+    }
+
+    private double getAverageScore(int whichScore) {
+        double averageScore = 0;
+        for (int i = 0; i < population.size(); i++) {
+            Individual a = population.get(i);
+            averageScore += a.getScores()[whichScore];
+        }
+        return averageScore/population.size();
+    }
+
+    // print average fitness, and average scores
+    public String toString() {
+        String s = "\nAverage fitness: " + getAverageFitness();
+        s += "\nAverage overall deviation: " + getAverageScore(0);
+        s += "\nAverage edge value: " + getAverageScore(1);
+        s += "\nAverage connection: " + getAverageScore(2);
+        s += "\n";
+
+        return s;
     }
 
 }

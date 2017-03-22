@@ -28,14 +28,18 @@ public class Main extends Application {
 
     public static final int Kth_NEAREST_NEIGHBOUR = 4;
 
-    public static final double THRESHHOLD = 110;
-    public static final double INIT_RANDOMNESS = 0.0002;
+    public static final double THRESHHOLD = 1;
+    public static final double INIT_RANDOMNESS = 0.001;
     public static final double CROSSOVER_RATE = 0.7;
-    public static final double MUTATION_RATE = 0.0001;
+    public static final double MUTATION_RATE = 0.1;
 
-    public static final int POPULATION_SIZE = 5;
-    public static final int ARCHIVE_SIZE = 50;
-    public static final int NUMBER_OF_GENERATIONS= 0;
+    public static final int POPULATION_SIZE = 50;
+    public static final int ARCHIVE_SIZE = POPULATION_SIZE;
+    public static final int NUMBER_OF_GENERATIONS= 500;
+
+    // ========================================================
+
+    private static final int IMAGE_NUMBER = 1;
 
     public static void main(String[] args) {
         launch();
@@ -50,7 +54,7 @@ public class Main extends Application {
     private Individual bestIndividual;
 
     public void init() throws IOException {
-        LoadImage img = new LoadImage(1);
+        LoadImage img = new LoadImage(IMAGE_NUMBER);
         //System.out.println(img);
         GeneticAlgorithm ga = new GeneticAlgorithm(img);
 
@@ -113,4 +117,31 @@ public class Main extends Application {
             }
         }*/
     }
+
+    /*public static void colorBigAndWrite(Graph graph, int num) {
+
+        for (int i = 0; i < graph.rows; i++) {
+            for (int j = 0; j < graph.cols; j++) {
+                for (Node neighbor : graph.nodes[i][j].neighbors) {
+                    if (neighbor.getSegment() != graph.nodes[i][j].getSegment()) {
+                        Color color = new Color(0,255,0);
+                        if ((j < graph.nodes[i].length-2 && j > 1) && (i < graph.nodes[i].length-2 && i > 1) ) {
+                            oldImage.setRGB(j*2-1,i*2-1, color.getRGB());
+                            oldImage.setRGB(j*2-1,i*2, color.getRGB());
+                            oldImage.setRGB(j*2,i*2-1, color.getRGB());
+                            oldImage.setRGB(j*2,i*2, color.getRGB());
+
+                        }
+
+                    }
+                }
+            }
+        }
+        try {
+            File f = new File(num + ".jpg");
+            ImageIO.write(oldImage, "jpg", f);
+        } catch (IOException e) {
+            System.out.println("IMAGE FAILED TO BE WRITTEN!");
+        }
+    }*/
 }

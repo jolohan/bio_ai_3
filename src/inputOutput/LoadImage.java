@@ -1,6 +1,8 @@
 package inputOutput;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,6 +19,7 @@ public class LoadImage {
     // "Test Image 3/1/Test image.jpg"
 
     private final int[][] imageArray;
+    private final int[][] imgArray;
     private int height;
     private int width;
 
@@ -29,9 +32,23 @@ public class LoadImage {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        imageArray = convertToArrayRGB(image);
+        this.imgArray = convertToArrayRGB(image);
+        int scale = 10;
+        image = scale(image, scale);
+        this.imageArray = convertToArrayRGB(image);
     }
 
+    public static BufferedImage scale(BufferedImage sbi, int scale) {
+        BufferedImage dbi = null;
+        if(sbi != null) {
+            dbi = new BufferedImage(sbi.getWidth()/scale,
+                    sbi.getHeight()/scale, sbi.getType());
+            Graphics2D g = dbi.createGraphics();
+            AffineTransform at = AffineTransform.getScaleInstance(scale, scale);
+            g.drawRenderedImage(sbi, at);
+        }
+        return dbi;
+    }
 
     // Changed to 3x2 image while testing
     private int[][] convertToArrayRGB(BufferedImage image) {

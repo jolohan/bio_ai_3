@@ -3,10 +3,7 @@ package ga;
 import inputOutput.LoadImage;
 import inputOutput.Main;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class GeneticAlgorithm {
 
@@ -26,20 +23,23 @@ public class GeneticAlgorithm {
     }
 
     public Individual mainLoop() {
-
-        Date date = new Date();
-        long start = date.getTime();
+        Scanner reader = new Scanner(System.in);  // Reading from System.in
         for (int i = 0; i < Main.NUMBER_OF_GENERATIONS; i++) {
             ArrayList<Individual> children = crossover(archivePopulation);
+            //System.out.println("crossover finished # "+ i);
             this.population = new Population(loadImage, true);
             this.population.copyIndividualsToNewPopulation(children);
             mutation(population);
-
+            //System.out.println("mutated # "+ i);
             updateFitness();
+            System.out.println(i+"  "+archivePopulation);
             selection();
-            if (date.getTime()-start > 1) {
-                System.out.println("timed out");
-                break;
+            if ((i+1)%10 == 0) {
+                System.out.println("press space to continue and q to quit");
+                String s = reader.next();
+                if (s.equals("q")) {
+                    break;
+                }
             }
         }
 
