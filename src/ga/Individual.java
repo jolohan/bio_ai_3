@@ -441,7 +441,6 @@ public class Individual {
 
     public void updateEdgePixels() {
         this.edgePixels = new ArrayList<>();
-        ArrayList<Integer> temp = new ArrayList<>(10000);
         for (int i = 0; i < genoType.length; i++) {
             if (isEdgePixel(i)) {
                 edgePixels.add(i);

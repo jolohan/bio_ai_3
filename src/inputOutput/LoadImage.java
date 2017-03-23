@@ -89,8 +89,8 @@ public class LoadImage {
 
     // Changed to 3x2 image while testing
     private int[][] convertToArrayRGB(BufferedImage image) {
-        int width = 10;//image.getWidth();
-        int height = 10;//image.getHeight();
+        int width = image.getWidth();
+        int height = image.getHeight();
         setHeightAndWidth(height, width);
         int numberOfColors = 3;
         int[][] result = new int[height*width][numberOfColors];

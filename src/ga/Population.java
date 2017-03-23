@@ -57,6 +57,7 @@ public class Population {
             density = 1 / (density + 2);
             int numberOfDominators = getNumberOfDominators(a);
             numberOfDominators += otherPopulation.getNumberOfDominators(a);
+            System.out.println("dom "+numberOfDominators);
             double fitnessScore = density + numberOfDominators;
             a.updateFitness(fitnessScore);
             //System.out.println(a.getFitness());
@@ -103,7 +104,7 @@ public class Population {
             dominated = true;
             for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
                 if (Main.WHICH_SCORES[j]){
-                    if (aScores[j] < bScores[j]) {
+                    if (aScores[j] <= bScores[j]) {
                         dominated = false;
                         break;
                     }

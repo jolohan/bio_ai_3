@@ -1,0 +1,2 @@
+overallDeviation    edgeValues    connection
+2266.918544331968  -826375.2056612435  10689.0  19

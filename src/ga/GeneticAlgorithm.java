@@ -3,7 +3,13 @@ package ga;
 import inputOutput.LoadImage;
 import inputOutput.Main;
 
-import java.util.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class GeneticAlgorithm {
 
@@ -25,8 +31,6 @@ public class GeneticAlgorithm {
     public Individual mainLoop() {
         Scanner reader = new Scanner(System.in);
         Individual bestInd = findBestInd();
-        Main.colorBigAndWrite(loadImage, 2, bestInd);
-        Main.colorBigAndWrite(loadImage, 1, bestInd);
         for (int i = 0; i < Main.NUMBER_OF_GENERATIONS; i++) {
 
 
@@ -42,10 +46,9 @@ public class GeneticAlgorithm {
             updateFitness();
             System.out.println(i+"  "+archivePopulation);
             selection();
-            if ((i+1)%1 == 0) {
+            if ((i)%10 == 0) {
                 bestInd = findBestInd();
-                Main.colorBigAndWrite(loadImage, 1, bestInd);
-                Main.colorBigAndWrite(loadImage, 2, bestInd);
+                output(loadImage);
                 System.out.println("Number of segments: "
                         +bestInd.findNumberOfSegments());
                 System.out.println("press c to continue and q to quit");
@@ -56,6 +59,35 @@ public class GeneticAlgorithm {
         return findBestInd();
     }
 
+    private void output(LoadImage loadImage) {
+        List<Individual> sortedJoined = getSortedJoinedPopulation();
+        ArrayList<Individual> front = new ArrayList<>(5);
+        int counter = 0;
+        Individual a = sortedJoined.get(counter);
+        front.add(a);
+        while (counter < 5 && a.getFitness() < 1) {
+            counter++;
+            a = sortedJoined.get(counter);
+            front.add(a);
+        }
+
+        Individual bestInd = sortedJoined.get(0);
+        writeToFile(front);
+        Main.colorBigAndWrite(loadImage, 1, bestInd);
+        Main.colorBigAndWrite(loadImage, 2, bestInd);
+        try {
+            String filePath = new File("").getAbsolutePath();
+            ProcessBuilder pb = new ProcessBuilder(
+                    filePath+"/myshellScript.sh",
+                    ""+Main.IMAGE_NUMBER, ""+bestInd.findNumberOfSegments());
+            System.out.println("starting shell script");
+            Process p = pb.start();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void updateFitness() {
         this.population.updateScores();
         this.archivePopulation.updateScores();
@@ -63,16 +95,68 @@ public class GeneticAlgorithm {
         this.archivePopulation.updateFitnesses(population);
     }
 
+    private List<Individual> getSortedJoinedPopulation() {
+        List<Individual> joined = getJoinedPopulations();
+        Collections.sort(joined, new FitnessComparator());
+        return joined;
+    }
+
+
     private Individual findBestInd() {
-        List<Individual> inds = getJoinedPopulations();
-        Individual bestInd = inds.get(0);
-        for (int i = 1; i < inds.size(); i++) {
-            Individual a = inds.get(i);
-            if (a.getNumberOfSegments() < bestInd.getNumberOfSegments()) {
-                bestInd = a;
+        List<Individual> joined = getSortedJoinedPopulation();
+        Individual bestInd = joined.get(0);
+        return bestInd;
+    }
+
+    private void writeToFile(ArrayList<Individual> individuals) {
+        BufferedWriter writer = null;
+        try {
+            //create a temporary file
+            String s = ""+Main.IMAGE_NUMBER;
+            String[] r = new String[4];
+            if (Main.WHICH_SCORES[0]) {
+                s += "-" + "dev";
+                r[0] = "overallDeviation";
+            }
+            if (Main.WHICH_SCORES[1]) {
+                s += "-" + "edge";
+                r[1] = "edgeValues";
+            }
+            if (Main.WHICH_SCORES[2]) {
+                s += "-" + "con";
+                r[2] = "connection";
+            }
+            r[3] = "number of segments";
+            File f = new File(s+".txt");
+            writer = new BufferedWriter(new FileWriter(f));
+            s = "";
+            for (int i = 0; i < Main.WHICH_SCORES.length; i++) {
+                if (Main.WHICH_SCORES[i]) {
+                    s += r[i] +"    ";
+                }
+            }
+            s = s.trim();
+            for (int i = 0; i < individuals.size(); i++) {
+                s += "\n";
+                for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
+                    if (Main.WHICH_SCORES[j]) {
+                        s += individuals.get(i).getScores()[j];
+                        s += "  ";
+                    }
+                }
+                s += individuals.get(i).getNumberOfSegments();
+            }
+
+            writer.write(s);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                // Close the writer regardless of what happens...
+                writer.close();
+            } catch (Exception e) {
             }
         }
-        return bestInd;
     }
 
     private void selection() {

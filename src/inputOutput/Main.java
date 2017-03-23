@@ -31,20 +31,21 @@ public class Main extends Application {
 
     public static final int Kth_NEAREST_NEIGHBOUR = 4;
 
-    public static final double THRESHHOLD = 5;
-    public static final double SIMILAR_SEGMENT_THRESHOLD = 10;
-    public static final double segmentSizeDemand = 1000;
+    public static final double THRESHHOLD = 3;
+    public static final int SIMILAR_SEGMENT_THRESHOLD = 5;
+    public static final int SIMILARITY_ROOF = 80;
+    public static final double segmentSizeDemand = 2000;
     public static final double INIT_RANDOMNESS = 1;
     public static final double CROSSOVER_RATE = 0.7;
     public static final double MUTATION_RATE = 0.3;
 
     public static final int POPULATION_SIZE = 10;
     public static final int ARCHIVE_SIZE = POPULATION_SIZE;
-    public static final int NUMBER_OF_GENERATIONS= 5;
+    public static final int NUMBER_OF_GENERATIONS= 1;
 
     // ========================================================
 
-    public static final int IMAGE_NUMBER = 2;
+    public static final int IMAGE_NUMBER = 1;
 
     public static void main(String[] args) {
         launch();
@@ -68,13 +69,6 @@ public class Main extends Application {
         this.width = img.getWidth();
         this.height = img.getHeight();
         this.img = img;
-        String co = "";
-        //Runtime.getRuntime().exec("/bin/sh", "-c", co);
-        //Runtime.getRuntime().exec(co);
-        ProcessBuilder pb = new ProcessBuilder(
-                "/Users/johan/Documents/bio_ai_3/myshellScript.sh", "myArg1", "myArg2");
-        Process p = pb.start();
-
     }
 
     @Override
@@ -150,8 +144,8 @@ public class Main extends Application {
 
     public static void colorBigAndWrite(LoadImage image, int type,
                                         Individual ind) {
-        BufferedImage img = image.IMAGE;
-        img = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        BufferedImage img = new BufferedImage(image.IMAGE.getWidth(),
+                image.IMAGE.getHeight(), image.IMAGE.getType());
         java.awt.Color color;
         color = new java.awt.Color(255, 255, 255);
             for (int i = 0; i < img.getHeight(); i++) {
@@ -188,7 +182,9 @@ public class Main extends Application {
             }
         }
         try {
-            File f = new File("Test Image 3/0_Results/"+type+ "-" + IMAGE_NUMBER + ".jpg");
+            String s = "Test Image 3/0_Results/"
+                    +IMAGE_NUMBER+"-"+type+"-"+ind.findNumberOfSegments()+".jpg";
+            File f = new File(s);
             ImageIO.write(img, "jpg", f);
         } catch (IOException e) {
             System.out.println("IMAGE FAILED TO BE WRITTEN!");
