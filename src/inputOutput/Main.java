@@ -17,17 +17,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main extends Application {
 
+    // NEED TO BE SET!
     // ========================================================
+    // WHICH IMAGE AND OBJECTIVES
+    public static final String IMAGE_PATH = "Test Image 3/";
+    public static final String IMAGE_NAME = "/Test image.jpg";
+    public static int IMAGE_NUMBER = 1;
+    public static final String filename = IMAGE_PATH
+            +IMAGE_NUMBER+IMAGE_NAME;
+
+    private static final int whichToLeaveOut = 3;
 
     public static final boolean[] WHICH_SCORES = new boolean[3];
     static {
-        WHICH_SCORES[0] = true;
-        WHICH_SCORES[1] = false;
-        WHICH_SCORES[2] = true;
+        for (int i = 1; i < 4; i++) {
+            if (i != whichToLeaveOut) {
+                WHICH_SCORES[i - 1] = true;
+            }
+        }
     }
+
+    // ========================================================
 
     public static final int Kth_NEAREST_NEIGHBOUR = 4;
 
@@ -37,15 +51,13 @@ public class Main extends Application {
     public static final double segmentSizeDemand = 2000;
     public static final double INIT_RANDOMNESS = 1;
     public static final double CROSSOVER_RATE = 0.7;
-    public static final double MUTATION_RATE = 0.3;
+    public static final double MUTATION_RATE = 0.1;
 
     public static final int POPULATION_SIZE = 20;
     public static final int ARCHIVE_SIZE = POPULATION_SIZE;
     public static final int NUMBER_OF_GENERATIONS= 200;
 
     // ========================================================
-
-    public static final int IMAGE_NUMBER = 1;
 
     public static void main(String[] args) {
         launch();
@@ -60,6 +72,8 @@ public class Main extends Application {
     private Individual bestIndividual;
 
     public void init() throws IOException {
+        Scanner sc = new Scanner(System.in);
+
         LoadImage img = new LoadImage();
         GeneticAlgorithm ga = new GeneticAlgorithm(img);
 
@@ -157,7 +171,7 @@ public class Main extends Application {
         ArrayList<Integer> edgePixels = ind.getEdgePixels();
         for (int i = 0; i < edgePixels.size(); i++) {
             int edgePixel = edgePixels.get(i);
-            if (LoadImage.imageNumber != 1) {
+            if (LoadImage.compressRatio != 1) {
                 int[][] coordinates = getCoordinatesXY(img, edgePixel);
                 for (int j = 0; j < coordinates.length; j++) {
                     int[] coordinateXY = coordinates[j];
@@ -183,7 +197,7 @@ public class Main extends Application {
     }
 
     public static int[][] getCoordinatesXY(BufferedImage img, int index) {
-        int size = LoadImage.imageNumber;
+        int size = LoadImage.compressRatio;
         int[][] coordinates = new int[(int)Math.pow(size, 2)][2];
         int row = Individual.getRow(index);
         int col = Individual.getCol(index);

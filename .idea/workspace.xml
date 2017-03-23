@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a604292-0088-42f1-9746-fab2dca6cadd" name="Default" comment="" />
+    <list default="true" id="8a604292-0088-42f1-9746-fab2dca6cadd" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/1-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2-2.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-13.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-13.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-16.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-16.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-17.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-17.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-18.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-18.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-19.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-19.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-21.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-21.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-13.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-13.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-16.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-16.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-17.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-17.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-18.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-18.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-19.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-19.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-21.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-21.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-dev-con.txt" afterPath="$PROJECT_DIR$/1-dev-con.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-dev-edge-con.txt" afterPath="$PROJECT_DIR$/1-dev-edge-con.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-dev-edge.txt" afterPath="$PROJECT_DIR$/1-dev-edge.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-edge-con.txt" afterPath="$PROJECT_DIR$/1-edge-con.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plotFront.py" afterPath="$PROJECT_DIR$/plotFront.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" afterPath="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/inputOutput/LoadImage.java" afterPath="$PROJECT_DIR$/src/inputOutput/LoadImage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/inputOutput/Main.java" afterPath="$PROJECT_DIR$/src/inputOutput/Main.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +40,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="LoadImage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/inputOutput/LoadImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+              <folding>
+                <element signature="docComment;class#LoadImage#0" expanded="false" />
+                <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GeneticAlgorithm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ga/GeneticAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="46" column="49" lean-forward="false" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+            <state relative-caret-position="330">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="method#GeneticAlgorithm#0;class#GeneticAlgorithm#0" expanded="false" />
                 <element signature="method#updateFitness#0;class#GeneticAlgorithm#0" expanded="false" />
@@ -35,13 +72,48 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="FitnessComparator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ga/FitnessComparator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="15" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Population.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ga/Population.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1980">
-              <caret line="132" column="34" lean-forward="true" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
+              <caret line="132" column="34" lean-forward="false" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlotCompare.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ga/PlotCompare.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntComp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ga/IntComp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+              <folding>
+                <element signature="e#183#184#0" expanded="true" />
+                <element signature="e#209#210#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,38 +158,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myshellScript.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myshellScript.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlotCompare.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ga/PlotCompare.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="1-edge-con.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1-edge-con.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="1-dev-con.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/1-dev-con.txt">
           <provider selected="true" editor-type-id="text-editor">
@@ -128,25 +168,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2-1.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-1.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2-2.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-2.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="1-dev-edge-con.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/1-dev-edge-con.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="39" column="23" lean-forward="false" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+            <state relative-caret-position="180">
+              <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,8 +224,8 @@
       <find>findHig</find>
       <find>fitness</find>
       <find>Collect</find>
-      <find>Coll</find>
       <find>System</find>
+      <find>Coll</find>
     </findStrings>
     <replaceStrings>
       <replace>i</replace>
@@ -215,7 +251,6 @@
         <option value="$PROJECT_DIR$/src/ga/FitnessComparator.java" />
         <option value="$PROJECT_DIR$/src/ga/IntegerComparator.java" />
         <option value="$PROJECT_DIR$/src/ga/IntComp.java" />
-        <option value="$PROJECT_DIR$/src/inputOutput/LoadImage.java" />
         <option value="$PROJECT_DIR$/helloWorld.py" />
         <option value="$PROJECT_DIR$/1-dev-edge-con.txt" />
         <option value="$PROJECT_DIR$/plotFront.py" />
@@ -223,9 +258,10 @@
         <option value="$PROJECT_DIR$/myshellScript.sh" />
         <option value="$PROJECT_DIR$/src/ga/Population.java" />
         <option value="$PROJECT_DIR$/src/ga/Individual.java" />
+        <option value="$PROJECT_DIR$/1-edge-con.txt" />
+        <option value="$PROJECT_DIR$/src/inputOutput/LoadImage.java" />
         <option value="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/inputOutput/Main.java" />
-        <option value="$PROJECT_DIR$/1-edge-con.txt" />
       </list>
     </option>
   </component>
@@ -969,16 +1005,16 @@
       <workItem from="1490186938759" duration="34512000" />
       <workItem from="1490227150159" duration="15000" />
       <workItem from="1490227242387" duration="380000" />
-      <workItem from="1490227653801" duration="14237000" />
+      <workItem from="1490227653801" duration="19380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149607000" />
+    <option name="totallyTimeSpent" value="154750000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="227" y="23" width="1213" height="873" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -995,7 +1031,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16323166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16323166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1025,12 +1061,6 @@
           <line>424</line>
           <properties />
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/inputOutput/Main.java</url>
-          <line>26</line>
-          <properties />
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ga/Individual.java</url>
@@ -1185,17 +1215,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ga/IntComp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding>
-            <element signature="e#183#184#0" expanded="false" />
-            <element signature="e#209#210#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test Image 3/1/Test image.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1283,28 +1302,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/inputOutput/LoadImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-345">
-          <caret line="91" column="20" lean-forward="false" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
-          <folding>
-            <element signature="docComment;class#LoadImage#0" expanded="false" />
-            <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test Image 3/0_Results/1-1-19.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1-dev-edge-con.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plotFront.py">
@@ -1317,11 +1317,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ga/FitnessComparator.java">
+    <entry file="file://$PROJECT_DIR$/myshellScript.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="15" selection-end-column="1" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1-edge-con.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1-dev-con.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1-dev-edge-con.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inputOutput/LoadImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+          <folding>
+            <element signature="docComment;class#LoadImage#0" expanded="false" />
+            <element signature="method#setHeightAndWidth#0;class#LoadImage#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ga/Population.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="132" column="34" lean-forward="false" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1335,28 +1390,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myshellScript.sh">
+    <entry file="file://$PROJECT_DIR$/src/ga/IntComp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1-dev-con.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ga/Population.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="132" column="34" lean-forward="true" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
+        <state relative-caret-position="150">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1398,20 +1438,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-2.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/src/ga/FitnessComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ga/GeneticAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="46" column="49" lean-forward="false" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+        <state relative-caret-position="330">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="method#GeneticAlgorithm#0;class#GeneticAlgorithm#0" expanded="false" />
             <element signature="method#updateFitness#0;class#GeneticAlgorithm#0" expanded="false" />
@@ -1425,18 +1463,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1-edge-con.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="39" column="23" lean-forward="false" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+        <state relative-caret-position="180">
+          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

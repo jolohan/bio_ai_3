@@ -31,13 +31,14 @@ public class GeneticAlgorithm {
     public Individual mainLoop() {
         Scanner reader = new Scanner(System.in);
         Individual bestInd = findBestInd();
-        for (int i = 0; i < Main.NUMBER_OF_GENERATIONS; i++) {
+        for (int i = 1; i <= Main.NUMBER_OF_GENERATIONS; i++) {
             ArrayList<Individual> children = crossover(archivePopulation);
             this.population = new Population(loadImage, true);
             this.population.copyIndividualsToNewPopulation(children);
             mutation(population);
             updateFitness();
-            System.out.println(i+"  "+archivePopulation);
+
+            System.out.println("Generation # "+i+"  "+archivePopulation);
             selection();
             if ((i)%20 == 0) {
                 bestInd = findBestInd();

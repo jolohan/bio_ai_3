@@ -16,19 +16,15 @@ import java.util.Scanner;
  */
 public class LoadImage {
 
-    public static final String IMAGE_PATH = "Test Image 3/";
-    public static final String IMAGE_NAME = "/Test image.jpg";
-    public static final int imageNumber = 1;
+
 
     // =====================
     public static int imageHeight;
     public static int imageWidth;
     // =====================
 
-    // "Test Image 3/1/Test image.jpg"
-
     static {
-        String s = IMAGE_PATH+Main.IMAGE_NUMBER+IMAGE_NAME;
+        String s = Main.filename;
         try {
             InputStream inputStream = new FileInputStream(s);
             BufferedImage image;
@@ -58,6 +54,7 @@ public class LoadImage {
     }
 
     public static BufferedImage IMAGE;
+    public static final int compressRatio = 1;
     private final int[][] imageArray;
     private final int[][] imgArray;
     private int height;
@@ -67,11 +64,11 @@ public class LoadImage {
         this.imgArray = convertToArrayRGB(IMAGE);
         //image = scale(image, LoadImage.imageNumber);
         int[][] temp = convertToArrayRGB(IMAGE);
-        if (imageNumber == 1) {
+        if (compressRatio == 1) {
             this.imageArray = temp;
         }
         else {
-            this.imageArray = convertImgArray(temp, imageNumber);
+            this.imageArray = convertImgArray(temp, compressRatio);
         }
     }
 
