@@ -24,7 +24,7 @@ public class Main extends Application {
 
     public static final boolean[] WHICH_SCORES = new boolean[3];
     static {
-        WHICH_SCORES[0] = true;
+        WHICH_SCORES[0] = false;
         WHICH_SCORES[1] = true;
         WHICH_SCORES[2] = true;
     }

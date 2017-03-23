@@ -65,21 +65,22 @@ public class GeneticAlgorithm {
         int counter = 0;
         Individual a = sortedJoined.get(counter);
         front.add(a);
-        while (counter < 5 && a.getFitness() < 1) {
+        while (counter < 4 && a.getFitness() < 1) {
             counter++;
             a = sortedJoined.get(counter);
             front.add(a);
         }
-
         Individual bestInd = sortedJoined.get(0);
-        writeToFile(front);
+        Collections.sort(front, new PlotCompare());
+        String filename = writeToFile(front);
         Main.colorBigAndWrite(loadImage, 1, bestInd);
         Main.colorBigAndWrite(loadImage, 2, bestInd);
         try {
             String filePath = new File("").getAbsolutePath();
             ProcessBuilder pb = new ProcessBuilder(
                     filePath+"/myshellScript.sh",
-                    ""+Main.IMAGE_NUMBER, ""+bestInd.findNumberOfSegments());
+                    ""+Main.IMAGE_NUMBER, ""+bestInd.findNumberOfSegments(),
+                    filePath+"/"+filename);
             System.out.println("starting shell script");
             Process p = pb.start();
         }
@@ -108,46 +109,43 @@ public class GeneticAlgorithm {
         return bestInd;
     }
 
-    private void writeToFile(ArrayList<Individual> individuals) {
+    private String writeToFile(ArrayList<Individual> individuals) {
         BufferedWriter writer = null;
+        String fileName = "";
         try {
             //create a temporary file
-            String s = ""+Main.IMAGE_NUMBER;
+            fileName = ""+Main.IMAGE_NUMBER;
             String[] r = new String[4];
             if (Main.WHICH_SCORES[0]) {
-                s += "-" + "dev";
+                fileName += "-" + "dev";
                 r[0] = "overallDeviation";
             }
             if (Main.WHICH_SCORES[1]) {
-                s += "-" + "edge";
+                fileName += "-" + "edge";
                 r[1] = "edgeValues";
             }
             if (Main.WHICH_SCORES[2]) {
-                s += "-" + "con";
+                fileName += "-" + "con";
                 r[2] = "connection";
             }
             r[3] = "number of segments";
-            File f = new File(s+".txt");
+            fileName += ".txt";
+            File f = new File(fileName);
             writer = new BufferedWriter(new FileWriter(f));
-            s = "";
-            for (int i = 0; i < Main.WHICH_SCORES.length; i++) {
-                if (Main.WHICH_SCORES[i]) {
-                    s += r[i] +"    ";
-                }
-            }
-            s = s.trim();
+            String string = "";
+            string = string.trim();
             for (int i = 0; i < individuals.size(); i++) {
-                s += "\n";
                 for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
                     if (Main.WHICH_SCORES[j]) {
-                        s += individuals.get(i).getScores()[j];
-                        s += "  ";
+                        string += individuals.get(i).getScores()[j];
+                        string += "  ";
                     }
                 }
-                s += individuals.get(i).getNumberOfSegments();
+                string += individuals.get(i).getNumberOfSegments();
+                string += "\n";
             }
 
-            writer.write(s);
+            writer.write(string);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -157,6 +155,7 @@ public class GeneticAlgorithm {
             } catch (Exception e) {
             }
         }
+        return fileName;
     }
 
     private void selection() {
