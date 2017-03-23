@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a604292-0088-42f1-9746-fab2dca6cadd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-dev-con.txt" afterPath="$PROJECT_DIR$/1-dev-con.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-edge-con.txt" afterPath="$PROJECT_DIR$/1-edge-con.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plotFront.py" afterPath="$PROJECT_DIR$/plotFront.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/inputOutput/Main.java" afterPath="$PROJECT_DIR$/src/inputOutput/Main.java" />
-    </list>
+    <list default="true" id="8a604292-0088-42f1-9746-fab2dca6cadd" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -150,8 +145,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+            <state relative-caret-position="495">
+              <caret line="39" column="23" lean-forward="false" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -974,12 +969,12 @@
       <workItem from="1490186938759" duration="34512000" />
       <workItem from="1490227150159" duration="15000" />
       <workItem from="1490227242387" duration="380000" />
-      <workItem from="1490227653801" duration="14215000" />
+      <workItem from="1490227653801" duration="14237000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149585000" />
+    <option name="totallyTimeSpent" value="149607000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="227" y="23" width="1213" height="873" extended-state="0" />
@@ -1440,8 +1435,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="495">
+          <caret line="39" column="23" lean-forward="false" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
