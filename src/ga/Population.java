@@ -100,17 +100,19 @@ public class Population {
         boolean dominated;
         for (int i = 0; i < population.size(); i++) {
             Individual b = population.get(i);
-            double[] bScores = b.getScores();
-            dominated = true;
-            for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
-                if (Main.WHICH_SCORES[j]){
-                    if (aScores[j] <= bScores[j]) {
-                        dominated = false;
-                        break;
+            if (a != b) {
+                double[] bScores = b.getScores();
+                dominated = true;
+                for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
+                    if (Main.WHICH_SCORES[j]){
+                        if (aScores[j] < bScores[j]) {
+                            dominated = false;
+                            break;
+                        }
                     }
                 }
+                if (dominated) { numberOfDominators ++; }
             }
-            if (dominated) { numberOfDominators ++; }
         }
         return numberOfDominators;
     }
