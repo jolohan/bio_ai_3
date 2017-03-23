@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a604292-0088-42f1-9746-fab2dca6cadd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-13.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-13.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-15.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-15.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-17.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-17.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-18.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-18.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-19.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-19.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-20.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-20.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-21.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-21.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-24.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-1-24.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-13.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-13.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-15.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-15.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-17.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-17.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-18.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-18.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-19.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-19.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-20.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-20.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-21.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-21.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-24.jpg" afterPath="$PROJECT_DIR$/Test Image 3/0_Results/1-2-24.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-dev-con.txt" afterPath="$PROJECT_DIR$/1-dev-con.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-edge-con.txt" afterPath="$PROJECT_DIR$/1-edge-con.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshellScript.sh" afterPath="$PROJECT_DIR$/myshellScript.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" afterPath="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ga/Individual.java" afterPath="$PROJECT_DIR$/src/ga/Individual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ga/Population.java" afterPath="$PROJECT_DIR$/src/ga/Population.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plotFront.py" afterPath="$PROJECT_DIR$/plotFront.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/inputOutput/Main.java" afterPath="$PROJECT_DIR$/src/inputOutput/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -39,7 +21,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GeneticAlgorithm.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GeneticAlgorithm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ga/GeneticAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -134,8 +116,8 @@
       <file leaf-file-name="1-edge-con.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/1-edge-con.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -165,11 +147,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+            <state relative-caret-position="315">
+              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -241,14 +223,14 @@
         <option value="$PROJECT_DIR$/src/inputOutput/LoadImage.java" />
         <option value="$PROJECT_DIR$/helloWorld.py" />
         <option value="$PROJECT_DIR$/1-dev-edge-con.txt" />
-        <option value="$PROJECT_DIR$/1-edge-con.txt" />
         <option value="$PROJECT_DIR$/plotFront.py" />
         <option value="$PROJECT_DIR$/src/ga/PlotCompare.java" />
         <option value="$PROJECT_DIR$/myshellScript.sh" />
         <option value="$PROJECT_DIR$/src/ga/Population.java" />
         <option value="$PROJECT_DIR$/src/ga/Individual.java" />
-        <option value="$PROJECT_DIR$/src/inputOutput/Main.java" />
         <option value="$PROJECT_DIR$/src/ga/GeneticAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/inputOutput/Main.java" />
+        <option value="$PROJECT_DIR$/1-edge-con.txt" />
       </list>
     </option>
   </component>
@@ -992,12 +974,12 @@
       <workItem from="1490186938759" duration="34512000" />
       <workItem from="1490227150159" duration="15000" />
       <workItem from="1490227242387" duration="380000" />
-      <workItem from="1490227653801" duration="12379000" />
+      <workItem from="1490227653801" duration="14215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147749000" />
+    <option name="totallyTimeSpent" value="149585000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="227" y="23" width="1213" height="873" extended-state="0" />
@@ -1358,14 +1340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1-edge-con.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myshellScript.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1439,16 +1413,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ga/GeneticAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1462,6 +1426,24 @@
             <element signature="method#getChild#0;class#GeneticAlgorithm#0" expanded="false" />
             <element signature="method#isSame#0;class#GeneticAlgorithm#0" expanded="false" />
             <element signature="method#getJoinedPopulations#0;class#GeneticAlgorithm#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1-edge-con.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inputOutput/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
