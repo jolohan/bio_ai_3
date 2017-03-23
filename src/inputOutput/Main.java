@@ -24,9 +24,9 @@ public class Main extends Application {
 
     public static final boolean[] WHICH_SCORES = new boolean[3];
     static {
-        WHICH_SCORES[0] = false;
+        WHICH_SCORES[0] = true;
         WHICH_SCORES[1] = true;
-        WHICH_SCORES[2] = true;
+        WHICH_SCORES[2] = false;
     }
 
     public static final int Kth_NEAREST_NEIGHBOUR = 4;
@@ -39,9 +39,9 @@ public class Main extends Application {
     public static final double CROSSOVER_RATE = 0.7;
     public static final double MUTATION_RATE = 0.3;
 
-    public static final int POPULATION_SIZE = 10;
+    public static final int POPULATION_SIZE = 20;
     public static final int ARCHIVE_SIZE = POPULATION_SIZE;
-    public static final int NUMBER_OF_GENERATIONS= 1;
+    public static final int NUMBER_OF_GENERATIONS= 200;
 
     // ========================================================
 
@@ -85,15 +85,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         stop(primaryStage);
-
-
-        /*try {
-            Thread.sleep(1000*10);
-            stop(primaryStage);
-        }
-        catch (Exception e) {
-            System.out.println(e.getStackTrace());
-        }*/
     }
 
     public void stop(Stage primaryStage) {
@@ -196,7 +187,6 @@ public class Main extends Application {
         int[][] coordinates = new int[(int)Math.pow(size, 2)][2];
         int row = Individual.getRow(index);
         int col = Individual.getCol(index);
-        //System.out.println(1+ " "+row+"    "+col);
         row = row*size;
         col = col*size;
 

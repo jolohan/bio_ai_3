@@ -57,16 +57,14 @@ public class Population {
             density = 1 / (density + 2);
             int numberOfDominators = getNumberOfDominators(a);
             numberOfDominators += otherPopulation.getNumberOfDominators(a);
-            System.out.println("dom "+numberOfDominators);
             double fitnessScore = density + numberOfDominators;
             a.updateFitness(fitnessScore);
-            //System.out.println(a.getFitness());
         }
     }
 
     double getDistanceToKthNearestNeighbour(Individual a, int k) {
         List<Double> distances = getDistanceInObjectiveSpace(a);
-        if (k <= distances.size()) {
+        if (k < distances.size()) {
             Collections.sort(distances);
             return distances.get(k);
         }
@@ -111,7 +109,17 @@ public class Population {
                         }
                     }
                 }
-                if (dominated) { numberOfDominators ++; }
+                if (dominated) {
+                    numberOfDominators ++;
+                    for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
+                        if (Main.WHICH_SCORES[j]){
+                            if (aScores[j] < bScores[j]) {
+                                System.out.println(
+                                        "dominance not working");
+                            }
+                        }
+                    }
+                }
             }
         }
         return numberOfDominators;

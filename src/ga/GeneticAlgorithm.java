@@ -32,27 +32,20 @@ public class GeneticAlgorithm {
         Scanner reader = new Scanner(System.in);
         Individual bestInd = findBestInd();
         for (int i = 0; i < Main.NUMBER_OF_GENERATIONS; i++) {
-
-
-            // check if copy works
-
-
             ArrayList<Individual> children = crossover(archivePopulation);
-            //System.out.println("crossover finished # "+ i);
             this.population = new Population(loadImage, true);
             this.population.copyIndividualsToNewPopulation(children);
             mutation(population);
-            //System.out.println("mutated # "+ i);
             updateFitness();
             System.out.println(i+"  "+archivePopulation);
             selection();
-            if ((i)%10 == 0) {
+            if ((i)%20 == 0) {
                 bestInd = findBestInd();
                 output(loadImage);
                 System.out.println("Number of segments: "
                         +bestInd.findNumberOfSegments());
-                System.out.println("press c to continue and q to quit");
-                //if (reader.next().equals("q")) { break; }
+                System.out.println("press any key to continue and q to quit");
+                if (reader.next().equals("q")) { break; }
             }
         }
         System.out.println("DONE");
@@ -64,11 +57,10 @@ public class GeneticAlgorithm {
         ArrayList<Individual> front = new ArrayList<>(5);
         int counter = 0;
         Individual a = sortedJoined.get(counter);
-        front.add(a);
-        while (counter < 4 && a.getFitness() < 1) {
+        while (counter < 5 && a.getFitness() < 1) {
+            front.add(a);
             counter++;
             a = sortedJoined.get(counter);
-            front.add(a);
         }
         Individual bestInd = sortedJoined.get(0);
         Collections.sort(front, new PlotCompare());
@@ -135,14 +127,19 @@ public class GeneticAlgorithm {
             String string = "";
             string = string.trim();
             for (int i = 0; i < individuals.size(); i++) {
-                for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
-                    if (Main.WHICH_SCORES[j]) {
-                        string += individuals.get(i).getScores()[j];
-                        string += "  ";
-                    }
+                if (individuals.get(i).getFitness() > 1) {
+                    System.out.println("hey");
                 }
-                string += individuals.get(i).getNumberOfSegments();
-                string += "\n";
+                else {
+                    for (int j = 0; j < Main.WHICH_SCORES.length; j++) {
+                        if (Main.WHICH_SCORES[j]) {
+                            string += individuals.get(i).getScores()[j];
+                            string += "  ";
+                        }
+                    }
+                    string += individuals.get(i).getNumberOfSegments();
+                    string += "\n";
+                }
             }
 
             writer.write(string);

@@ -107,7 +107,6 @@ public class Individual {
         while (! queue.isEmpty()) {
             thisPoint = queue.poll();
             genoType[thisPoint] = segmentNumber;
-            //System.out.println("segmentNumber: "+segmentNumber);
             ArrayList<Integer> neighbours =getNeighbours(thisPoint);
             for (int i = 0; i < neighbours.size(); i++) {
                 int neighbour = neighbours.get(i);
@@ -124,10 +123,6 @@ public class Individual {
                     }
 
                 }
-                else {
-                    //System.out.println("\n"+thisPoint+"      "+neighbour);
-                    double distance = getDistanceInColors(thisPoint, neighbour);
-                }
             }
         }
     }
@@ -141,7 +136,6 @@ public class Individual {
             updateSegmentNumbers(newAvailableSegmentNumbers);
             numberOfSegments = findHighestSegmentNumber();
             newAvailableSegmentNumbers = joinSimilarSegments(counter);
-            //System.out.println("# "+findNumberOfSegments());
         }
     }
 
@@ -161,8 +155,6 @@ public class Individual {
                                 centroids[genoType[i]], centroids[genoType[neighbour]]);
                         if (distance < Main.SIMILAR_SEGMENT_THRESHOLD*multiplier) {
                             availableSegmentNumbers.add(genoType[neighbour]);
-                            //System.out.println("\n hey");
-                            //System.out.println(genoType[i]+"    "+genoType[neighbour]);
                             renumberSegment(genoType[i], neighbour);
                         }
                     }
@@ -173,7 +165,6 @@ public class Individual {
     }
 
     private void updateSegmentNumbers(ArrayList<Integer> availableSegmentNumbers) {
-        //System.out.println(availableSegmentNumbers);
         IntComp intComp = new IntComp();
         PriorityQueue<Integer> q = new PriorityQueue<>(intComp);
         q.addAll(availableSegmentNumbers);
@@ -190,7 +181,6 @@ public class Individual {
 
     private void renumberSegment(int newSegmentNumber, int index) {
         int oldSegmentNumber = genoType[index];
-        //System.out.println("old segment number: "+oldSegmentNumber);
         Queue<Integer> queue = new LinkedList();
         queue.add(index);
         genoType[index] = newSegmentNumber;
@@ -202,36 +192,10 @@ public class Individual {
                 int neighbour = neighbours.get(i);
                 if (genoType[neighbour] == oldSegmentNumber) {
                     queue.add(neighbour);
-                    //System.out.println("old "+genoType[neighbour]);
                     genoType[neighbour] = newSegmentNumber;
-                    //System.out.println("new " +genoType[neighbour]);
-                    //System.out.println(1/0);
                 }
             }
         }
-    }
-
-    private int getRandomIntFromArray(ArrayList<Integer> array) {
-        return (int) (Math.random()*array.size());
-    }
-
-
-    private int getMostSimilarNeighbour(ArrayList<Integer> neighbours, int pixel) {
-        int mostSimilar = -1;
-        double mostSimilarScore = 10000;
-        for (int neighbour : neighbours) {
-            double score = getDistanceInColors(neighbour, pixel);
-            if (score < mostSimilarScore) {
-                mostSimilar = neighbour;
-                mostSimilarScore = score;
-            }
-        }
-        return mostSimilar;
-    }
-
-    private boolean isSimilar(int pixel1, int pixel2) {
-        //System.out.println(getDistanceInColors(pixel1,pixel2));
-        return getDistanceInColors(pixel1, pixel2) < Main.THRESHHOLD;
     }
 
     public double getDistance(int[] colors1, int[] colors2) {
@@ -281,7 +245,6 @@ public class Individual {
         for (int i = 0; i < genoType.length; i++) {
             segmentNumber = genoType[i];
             for (int j = 0; j < numColors; j++) {
-                //System.out.println(i+"      "+centroids.length+"        "+segmentNumber);
                 centroids[segmentNumber][j] += imageArray[i][j];
                 numberOfPixelsInSegments[segmentNumber] ++;
             }
@@ -289,7 +252,8 @@ public class Individual {
         for (int i = 1; i < numberOfSegments+1; i++) {
             if (numberOfPixelsInSegments[i] > 0) {
                 for (int j = 0; j < numColors; j++) {
-                    centroids[i][j] = centroids[i][j]/numberOfPixelsInSegments[i];
+                    centroids[i][j] = centroids[i][j]
+                            /numberOfPixelsInSegments[i];
                 }
             }
         }
@@ -396,19 +360,6 @@ public class Individual {
 
     public ArrayList<Integer> getEdgePixels() {
         return edgePixels;
-    }
-
-    public void printGenoType() {
-        String s = "";
-        for (int i = 0; i < LoadImage.imageHeight; i ++) {
-            String r = "";
-            for (int j = 0; j < LoadImage.imageWidth; j++) {
-                r += genoType[i*LoadImage.imageWidth+j] + " ";
-            }
-            r = r.trim();
-            s += r + "\n";
-        }
-        System.out.println(s);
     }
 
     public String toString() {
